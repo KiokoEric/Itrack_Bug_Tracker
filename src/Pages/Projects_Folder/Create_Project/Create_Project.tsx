@@ -33,8 +33,8 @@ const Create_Project: React.FC = () => {
         EndDate: z.string().min(1, 'End Date are required'),
         Priority: z.string().min(1, 'Priority is required'),
         Assigned: z.string().min(1, 'Assigned is required'),
-        StartDate: z.string().min(1, 'Start Date are required'),
-        Manager: z.string().min(1, 'Product Manager is required'),
+        StartDate: z.string().min(1, 'Start date are required'),
+        Manager: z.string().min(1, 'Product manager is required'),
         Description: z.string().min(1, 'Description is required'),
     });
 
@@ -76,7 +76,7 @@ return (
         <section>
             <form onSubmit={handleSubmit(AddProject)} method="post" encType="multipart/form-data" className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-4'>
-                    <label className='font-bold' htmlFor="">Name</label> 
+                    <label className='font-bold' htmlFor="">Project Name</label> 
                     <input placeholder="Enter Project Name..." {...register('Name', { required: 'Name is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
                     {errors.Name && <p className="text-center text-red-700">{errors.Name.message}</p>}
                 </div>
