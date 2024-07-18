@@ -36,3 +36,6 @@ body {
   column-gap: 1.5rem;
   width: 100%;
 }
+#SideBar {
+  min-height: 97.5vh;
+}
