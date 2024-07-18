@@ -54,7 +54,7 @@ const SideBar: React.FC = () => {
     }
 
 return (
-    <div id="SideBar" className="bg-red-700 flex flex-col justify-between mt-0.5 py-5 rounded text-white w-64" >
+    <div id="SideBar" className="bg-red-700 flex flex-col justify-between mt-0.5 py-5 rounded text-white min-w-max" >
         <section className="flex flex-col gap-3 px-5">
             <div>
                 <figure className="flex font-bold justify-center gap-1.5">
@@ -73,7 +73,7 @@ return (
                     </h3>
                     {Showproject ? (
                         <article className="flex flex-col gap-2 m-3" >
-                            <Link to="/Project" className='cursor-pointer flex gap-2' >
+                            <Link to="/Create_Project" className='cursor-pointer flex gap-2' >
                                 <FaFolderPlus className='text-white no-underline'  />
                                 Create Project
                             </Link>
@@ -100,7 +100,7 @@ return (
                     {
                     Showticket ? (
                         <article className="flex flex-col gap-2 m-3">
-                            <Link to="/Ticket" className='cursor-pointer flex gap-2' >
+                            <Link to="/Create_Ticket" className='cursor-pointer flex gap-2' >
                                 <BsFillTagFill className='text-white no-underline'  />
                                 Create Ticket
                             </Link>
