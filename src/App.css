@@ -39,3 +39,8 @@ body {
 #SideBar {
   min-height: 97.5vh;
 }
+#TableHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -21,7 +21,7 @@ return (
             <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{SecondHeading}</Typography></TableCell>
             <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{ThirdHeading}</Typography></TableCell>
             <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{FourthHeading}</Typography></TableCell>
-            <section className={TableStyle} >
+            <section className={TableStyle}>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{FifthHeading}</Typography></TableCell>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{SixthHeading}</Typography></TableCell>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{SeventhHeading}</Typography></TableCell>
