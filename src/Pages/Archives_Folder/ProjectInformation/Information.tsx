@@ -8,7 +8,7 @@ import Project from "../../../Components/Common/Project/Project";
 import TableOutput from "../../../Components/Common/TableOutput/TableOutput";
 import TableHeading from "../../../Components/Common/TableHead/TableHeading";
 
-const Project_Details:React.FC = () => {
+const Information:React.FC = () => {
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const Project_Details:React.FC = () => {
     const [ProjectName, setProjectName] = useState("")
 
     useEffect(() => {
-        axios.get(`https://localhost:4000/Projects/${id}`, {
+        axios.get(`https://localhost:4000/Projects/ProjectArchives/${id}`, {
         headers: { authorization: Cookie.auth_token }
         }) 
         .then((Response) => {
@@ -132,4 +132,4 @@ return (
 )
 }
 
-export default Project_Details
+export default Information
