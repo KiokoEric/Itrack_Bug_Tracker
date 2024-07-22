@@ -81,7 +81,7 @@ return (
                                 <MdFolderShared className='cursor-pointer text-white no-underline'  />
                                 My Projects
                             </Link>
-                            <Link to="/All_Projects" className='cursor-pointer flex gap-2' >
+                            <Link to="/Projects" className='cursor-pointer flex gap-2' >
                                 <FaFolder className='text-white no-underline'  />
                                 All Projects
                             </Link>
@@ -108,7 +108,7 @@ return (
                                 <FaUserTag className=' text-white no-underline'  />
                                 My Tickets
                             </Link>
-                            <Link to="/All_Tickets" className='cursor-pointer flex gap-2' >
+                            <Link to="/Tickets" className='cursor-pointer flex gap-2' >
                                 <BsFillTagsFill className='text-white no-underline'  />
                                 All Tickets
                             </Link>
