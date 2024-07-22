@@ -13,7 +13,6 @@ interface OutputProps {
     Name: string;
 }
 
-
 const Output: React.FC<OutputProps> = ({ ID, Image, Name, Delete, Archive }) => {
 return (
     <div className='flex flex-col gap-5 px-5 text-black'>
