@@ -4,11 +4,8 @@ import { RiFolder6Fill } from "react-icons/ri";
 import Loading from "../../../assets/Loading.gif";
 import React, { useEffect, useState } from 'react';
 import Output from "../../../Components/Common/Output/Output";
-// import { useGetUserID } from "../../../Components/Hooks/useGetUserID";
 
 const Projects: React.FC = () => {
-
-    // const UserID = useGetUserID();
 
     const [Projects, setProjects] = useState([])
     const [Cookie, _] = useCookies(["auth_token"]);
