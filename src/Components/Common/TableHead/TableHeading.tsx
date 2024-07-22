@@ -15,7 +15,7 @@ interface TableHeadProps {
 const TableHeading: React.FC<TableHeadProps> = ({ FirstHeading, SecondHeading, ThirdHeading, FourthHeading, FifthHeading, SixthHeading, SeventhHeading, EighthHeading}) => {
 return (
     <TableHead>
-        <TableRow sx={{ display: 'flex', justifyContent: 'space-between', height: '40px' , minWidth: '1100px', overflowY: 'hidden' }}>
+        <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', height: '40px' , minWidth: '1100px', overflowY: 'hidden' }}>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{FirstHeading}</Typography></TableCell>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{SecondHeading}</Typography></TableCell>
                 <TableCell align='center'><Typography sx={{ fontWeight: 'bold' }}>{ThirdHeading}</Typography></TableCell>

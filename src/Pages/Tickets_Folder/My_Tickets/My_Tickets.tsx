@@ -5,10 +5,13 @@ import { IoIosPricetags } from "react-icons/io";
 import Loading from "../../../assets/Loading.gif";
 import React, { useEffect, useState } from 'react';
 import { Paper, TableBody, TableContainer } from '@mui/material';
+import { useGetUserID } from "../../../Components/Hooks/useGetUserID";
 import TableHeading from '../../../Components/Common/TableHead/TableHeading';
 import TableOutput from "../../../Components/Common/TableOutput/TableOutput";
 
-const Tickets:React.FC = () => {
+const My_Tickets:React.FC = () => {
+
+    const UserID = useGetUserID();
 
     const navigate = useNavigate()
     const [Tickets, setTickets] = useState([])
@@ -20,7 +23,7 @@ useEffect(() => {
     // Fetch Tickets
 
     const FetchTickets = () => {
-        axios.get(`https://localhost:4000/Tickets/Tickets`, {
+        axios.get(`https://localhost:4000/Tickets/${UserID}/Tickets`, {
         headers: { authorization: Cookie.auth_token },
         }) 
         .then((Response) => {
@@ -73,7 +76,7 @@ return (
             <div>
                 <figure className='flex gap-4' >
                     <IoIosPricetags size="3rem" />
-                    <h1 className='font-bold pb-2 text-5xl'>All Tickets</h1>
+                    <h1 className='font-bold pb-2 text-5xl'>My Tickets</h1>
                 </figure>
                 <hr />
                 <br />
@@ -89,24 +92,24 @@ return (
                         FourthHeading = 'Project Title'
                     />
                     <TableBody>
-                    {
-                        (Tickets.length > 0) ? 
-                        Tickets.map((Ticket: any) => (
-                            <TableOutput 
-                                ID={Ticket._id}
-                                FirstOutput={Ticket.Priority}
-                                SecondOutput={Ticket.Status}
-                                ThirdOutput={Ticket.Title}
-                                FourthOutput={Ticket.Projects}
-                                FifthOutput={Ticket.Category}
-                                SixthOutput={Ticket.Submitted}
-                                SeventhOutput={Ticket.Date}
-                                Navigate={() => navigate(`/Ticket/${Ticket._id}`)}
-                                Delete={() => handleDelete(Ticket._id)}
-                                Archive={() => handleArchive(Ticket._id)}
-                            />
-                        )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
-                    }
+                        {
+                            (Tickets.length > 0) ? 
+                            Tickets.map((Ticket: any) => (
+                                <TableOutput 
+                                    ID={Ticket._id}
+                                    FirstOutput={Ticket.Priority}
+                                    SecondOutput={Ticket.Status}
+                                    ThirdOutput={Ticket.Title}
+                                    FourthOutput={Ticket.Projects}
+                                    FifthOutput={Ticket.Category}
+                                    SixthOutput={Ticket.Submitted}
+                                    SeventhOutput={Ticket.Date}
+                                    Navigate={() => navigate(`/Ticket/${Ticket._id}`)}
+                                    Delete={() => handleDelete(Ticket._id)}
+                                    Archive={() => handleArchive(Ticket._id)}
+                                />
+                            )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
+                        }
                     </TableBody>
                 </TableContainer>
             </div>
@@ -116,4 +119,4 @@ return (
 )
 }   
 
-export default Tickets
+export default My_Tickets
