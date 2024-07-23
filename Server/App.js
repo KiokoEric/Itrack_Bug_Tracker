@@ -1,16 +1,16 @@
+const app = express();
+const cors = require("cors");
+const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const app = express();
 
 dotenv.config();
 
 // Middleware
 
 app.use(cors({
-    origin: ["https://itrack-0krk.onrender.com"],
+    origin: ["http://localhost:5173"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }))
