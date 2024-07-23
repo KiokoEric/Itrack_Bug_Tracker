@@ -9,7 +9,7 @@ import Button from '../../../Components/Common/Button/Button';
 // import { useGetUserID } from '../../../Components/Hooks/useGetUserID';
 
 interface FormValues {
-    Title: string;
+    Name: string;
     Status: string;
     Project: string;
     Category: string;
@@ -26,7 +26,7 @@ const Create_Ticket: React.FC = () => {
     const [ Cookie,_ ] = useCookies(["auth_token"]);
 
     const TicketSchema = z.object({
-        Title: z.string().min(1, 'Title is required'),
+        Name: z.string().min(1, 'Name is required'),
         Category: z.string().min(1, 'Category is required'),
         Priority: z.string().min(1, 'Priority is required'),
         Status: z.string().min(1, 'Ticket status is required'),
@@ -73,13 +73,13 @@ return (
         <section>
             <form onSubmit={handleSubmit(AddTicket)} method="post" encType="multipart/form-data" className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-4'>
-                    <label className='font-bold' htmlFor="">Ticket Title</label> 
-                    <input placeholder="Enter Project Name..." {...register('Title', { required: 'Title is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
-                    {errors.Title && <p className="text-center text-red-700">{errors.Title.message}</p>}
+                    <label className='font-bold' htmlFor="">Ticket Name</label> 
+                    <input placeholder="Enter Ticket Name..." {...register('Name', { required: 'Name is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
+                    {errors.Name && <p className="text-center text-red-700">{errors.Name.message}</p>}
                 </div>
                 <div className='flex flex-col gap-4'>
-                    <label className='font-bold' htmlFor="">Project Title</label> 
-                    <input placeholder="Enter Project Title..." {...register('Project', { required: 'Project title is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
+                    <label className='font-bold' htmlFor="">Project Name</label> 
+                    <input placeholder="Enter Project Name..." {...register('Project', { required: 'Project title is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
                     {errors.Project && <p className="text-center text-red-700">{errors.Project.message}</p>}
                 </div>
                 <div className='flex flex-col gap-4'>
