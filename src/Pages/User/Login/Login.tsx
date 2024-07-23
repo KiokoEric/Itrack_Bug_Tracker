@@ -1,9 +1,9 @@
 import * as z from 'zod';
 import Axios from "axios";
 import React from 'react';
+import { ImUser } from "react-icons/im";
 import { useSnackbar } from 'notistack';
 import { useCookies } from "react-cookie";
-import { ImUserCheck } from "react-icons/im";
 import LoginImage from "../../../assets/Login.jpg";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -46,7 +46,7 @@ const Login: React.FC  = () => {
 return (
     <div>
         <figure className='flex gap-4' >
-            <ImUserCheck size="3rem" />
+            <ImUser size="3rem" />
             <h1 className='font-bold pb-2 text-5xl'>Login</h1>
         </figure>
         <hr />
