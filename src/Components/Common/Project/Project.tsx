@@ -50,4 +50,4 @@ return (
 )
 }
 
-export default Project
+export default React.memo(Project)
