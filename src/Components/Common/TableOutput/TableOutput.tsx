@@ -38,4 +38,4 @@ return (
 )
 }
 
-export default TableOutput
+export default React.memo(TableOutput)

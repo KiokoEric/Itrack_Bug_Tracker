@@ -29,4 +29,4 @@ return (
 )
 }
 
-export default TableHeading
+export default React.memo(TableHeading)
