@@ -6,7 +6,6 @@ const Ticket = require("../Models/Tickets");
 const cookieParser = require("cookie-parser"); 
 const Archive = require("../Models/ArchivedTickets");
 
-
 const myPassword = process.env.Password
 
 ArchiveRoute.use(cookieParser())
