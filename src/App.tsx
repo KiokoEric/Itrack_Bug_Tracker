@@ -2,9 +2,10 @@ import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar/SideBar';
-import Login from './Pages/User/Login/Login';
 const Projects = React.lazy(() => import('./Pages/Projects_Folder/Projects/Projects'))
 const Tickets = React.lazy(() => import('./Pages/Tickets_Folder/Tickets/Tickets'))
+const Login = React.lazy(() => import('./Pages/User/Login/Login'))
+const Registration = React.lazy(() => import('./Pages/User/Registration/Registration'))
 const Administration = React.lazy(() => import('./Pages/Administration/Administration'))
 const ProjectArchives = React.lazy(() => import('./Pages/Archives_Folder/ProjectArchives/ProjectArchives'))
 const TicketArchives = React.lazy(() => import('./Pages/Archives_Folder/TicketArchives/TicketArchives'))
@@ -28,7 +29,8 @@ function App() {
         <Route path='/Administration' element={<React.Suspense><Administration /> </React.Suspense>} />
         <Route path='/ProjectArchives' element={<React.Suspense><ProjectArchives /></React.Suspense>} />
         <Route path='/TicketArchives' element={<React.Suspense><TicketArchives /></React.Suspense>} />
-        <Route path='/Login' element={<Login />} />
+        <Route path='/' element={<React.Suspense><Login /></React.Suspense>} />
+        <Route path='/Registration' element={<React.Suspense><Registration /></React.Suspense>} />
       </Routes>
     </div>
   )
