@@ -128,16 +128,16 @@ return (
                         </select>
                         {errors.Manager && <p className="text-center text-red-700">{errors.Manager.message}</p>}
                     </div>
-                    <div className='flex flex-col gap-1'>
+                    <div className='cursor-pointer flex flex-col gap-1'>
                         <label className='font-bold' onClick={() => setShowAssigned(!ShowAssigned)} >Assigned Developer(s)</label>
                         <div className='bg-black w-full h-0.5' />
                         {
                         ShowAssigned ? (
-                            <div>
-                                {
+                            <div className='cursor-pointer'>
+                                { 
                                     Users.map((User: any) => {
                                         return(
-                                        <div className='flex flex-col gap-2'>
+                                        <div className='cursor-pointer flex flex-col gap-2'>
                                             <input type='checkbox' {...register('Assigned', { required: 'Assigned Developers is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-96' />
                                             <label id={User.Name}>{User.Name}</label>
                                         </div>

@@ -10,7 +10,7 @@ interface TableBodyProps {
     Archive?: (e: React.MouseEvent<SVGAElement>) => void;
     ID: any
     TableStyle?: string;
-    FirstOutput: string;
+    FirstOutput: any;
     ThirdOutput: string;
     FifthOutput?: string;
     SixthOutput?: string;
@@ -21,7 +21,7 @@ interface TableBodyProps {
 
 const TableOutput:React.FC<TableBodyProps> = ({ ID,FirstOutput, SecondOutput, ThirdOutput, FourthOutput, FifthOutput, SixthOutput, SeventhOutput, Navigate, Delete, Archive }) => {
 return (
-    <TableRow key={ID}>
+    <TableRow key={ID} sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', height: '40px', width: '1150px' , overflow: 'hidden' }}>
         <TableCell align='center' ><Typography sx={{ fontSize: 17 }}>{FirstOutput}</Typography></TableCell>
         <TableCell align='center' ><Typography sx={{ fontSize: 17 }}>{SecondOutput}</Typography></TableCell>
         <TableCell align='center' ><Typography sx={{ fontSize: 17 }}>{ThirdOutput}</Typography></TableCell>

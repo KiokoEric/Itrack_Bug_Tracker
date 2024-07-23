@@ -80,7 +80,7 @@ return (
                 </figure>
                 <hr />
                 <br />
-                <TableContainer  component={Paper} >
+                <TableContainer  component={Paper} sx={{ overflow: 'hidden' }} >
                     <TableHeading
                         EighthHeading = 'Action'
                         SecondHeading = 'Status'
