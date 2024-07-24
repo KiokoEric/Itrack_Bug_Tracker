@@ -39,8 +39,8 @@ TicketRoute.post("/AddTicket", verifyToken ,async (req, res) => {
 
 TicketRoute.get("/Tickets", async (req, res) => { 
     try{
-        const AllTickets = await Ticket.find() 
-        res.json(AllTickets)
+        const Tickets = await Ticket.find() 
+        res.json(Tickets)
     }
     catch(err) { 
         res.send(err)  
@@ -49,8 +49,8 @@ TicketRoute.get("/Tickets", async (req, res) => {
 
 TicketRoute.get("/TicketsLength", async (req, res) => { 
     try{
-        const AllTickets = await Ticket.find()  
-        const ArrayLength = AllTickets.length;
+        const Tickets = await Ticket.find()  
+        const ArrayLength = Tickets.length;
 
         res.json({ ArrayLength });
     }
