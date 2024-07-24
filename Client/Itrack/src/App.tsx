@@ -6,6 +6,7 @@ const Projects = React.lazy(() => import('./Pages/Projects_Folder/Projects/Proje
 const Tickets = React.lazy(() => import('./Pages/Tickets_Folder/Tickets/Tickets'))
 const Login = React.lazy(() => import('./Pages/User/Login/Login'))
 const Profile = React.lazy(() => import('./Pages/User/Profile/Profile'))
+const Delete = React.lazy(() => import('./Pages/User/Delete/Delete'))
 const Registration = React.lazy(() => import('./Pages/User/Registration/Registration'))
 const Administration = React.lazy(() => import('./Pages/Administration/Administration'))
 const ProjectArchives = React.lazy(() => import('./Pages/Archives_Folder/ProjectArchives/ProjectArchives'))
@@ -33,6 +34,7 @@ function App() {
         <Route path='/' element={<React.Suspense><Login /></React.Suspense>} />
         <Route path='/Registration' element={<React.Suspense><Registration /></React.Suspense>} />
         <Route path='/Profile' element={<React.Suspense><Profile /></React.Suspense>} />
+        <Route path='/Delete' element={<React.Suspense><Delete /></React.Suspense>} />
       </Routes>
     </div>
   )
