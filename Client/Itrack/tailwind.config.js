@@ -9,6 +9,9 @@ export default {
       width: {
         '120': '500px',
       },
+      fontSize: {
+        'custom': '21px', // Custom text size
+      },
     },
   },
   plugins: [],
