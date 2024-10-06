@@ -1,23 +1,30 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 interface InputProps {
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-    ContainerStyle?: string;
+    Value?:any;
+    type?: any;
+    Change?: any;
     Label: string;
-    LabelStyle: string,
-    Placeholder?: string;
+    error?: string;
+    Children?: any;
+    TextStyle?: string;
     inputStyle: string;
+    LabelStyle: string;
+    Placeholder?: string;
+    ContainerStyle: string;
 }
 
-const Input: React.FC<InputProps> = ({ContainerStyle, Label, LabelStyle, Placeholder, inputStyle, onChange}) => {
+const Input: React.FC<InputProps> = ({ ContainerStyle, type, Children, Label, LabelStyle, Placeholder, inputStyle, Value, Change, TextStyle}) => {
 
 return (
     <div className={ContainerStyle}>
         <label className={LabelStyle}>{Label}</label>
-        <input type="text" placeholder={Placeholder} className={inputStyle} onChange={onChange} />
+        <div className={TextStyle}>
+            <input type={type} placeholder={Placeholder} className={inputStyle} value={Value} onChange={Change} />
+            {Children}
+        </div>
     </div>
 )
 }
 
 export default React.memo(Input)
-
