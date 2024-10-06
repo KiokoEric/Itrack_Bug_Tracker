@@ -9,7 +9,7 @@ import Heading from "../../../Components/Common/Heading/Heading";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 
-const ProjectsArchives: React.FC = () => {
+const Projects_Archives: React.FC = () => {
 
     const [Cookie, _] = useCookies(["auth_token"]);
     
@@ -113,4 +113,4 @@ return (
 )
 }
 
-export default ProjectsArchives
+export default Projects_Archives
