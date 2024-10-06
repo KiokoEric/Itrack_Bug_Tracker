@@ -1,29 +1,36 @@
 import axios from "axios";
+import { format } from 'date-fns';
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import { FaArchive } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
-import Loading from "../../../assets/Loading.gif";
 import React, { useEffect, useState } from 'react';
+import Loading from "../../../assets/Loading_Image.gif";
+import Heading from "../../../Components/Common/Heading/Heading";
 import { Paper, TableBody, TableContainer } from '@mui/material';
 import { useGetUserID } from "../../../Components/Hooks/useGetUserID";
 import TableHeading from '../../../Components/Common/TableHead/TableHeading';
 import TableOutput from "../../../Components/Common/TableOutput/TableOutput";
+import TableHead from '../../../Components/Common/Mobile_TableHead/Table_Head';
+import Table_Body from "../../../Components/Common/Tablet_TableBody/Table_Body";
+import TableResults from "../../../Components/Common/Mobile_TableBody/Table_Results";
+import Table_Heading from "../../../Components/Common/Tablet_TableHead/Table_Heading";
 
 const My_Tickets:React.FC = () => {
 
     const UserID = useGetUserID();
-
-    const navigate = useNavigate()
-    const [Tickets, setTickets] = useState([])
     const [Cookie, _] = useCookies(["auth_token"]); 
-    const [isLoading, setIsLoading] = useState(true);
 
-useEffect(() => {
+    // USESTATE HOOK
 
-    // Fetch Tickets
+    const [Tickets, setTickets] = useState<[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    // FETCHING ALL THE TICKETS CREATED BY AN ITRACK USER BASED ON THEIR USER ID
+
+    useEffect(() => {
 
     const FetchTickets = () => {
-        axios.get(`https://localhost:4000/Tickets/${UserID}/Tickets`, {
+        axios.get(`http://localhost:4000/Ticket/${UserID}/Tickets`, {
         headers: { authorization: Cookie.auth_token },
         }) 
         .then((Response) => {
@@ -32,30 +39,18 @@ useEffect(() => {
         }) 
         setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 1500);
     } 
 
     FetchTickets()
 
     },[])
 
-    const handleDelete= (_id: any) => {
-
-        try {
-            axios.post(`https://localhost:4000/Tickets/${_id}`,  {
-                headers: { authorization: Cookie.auth_token },
-            }) 
-            .then(() => { 
-                window.location.reload()
-            })
-        } catch (error) {  
-            console.error(error) 
-        }
-    }
+    // ARCHIVING THE TICKET BASED ON THE TICKET ID
 
     const handleArchive= (ID: any) => {
         try {
-            axios.post(`https://localhost:4000/Tickets/moveTicket/${ID}`, ID ,  {
+            axios.post(`http://localhost:4000/Ticket/moveTicket/${ID}`, ID ,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 
@@ -66,52 +61,109 @@ useEffect(() => {
         }
     }
 
+    // DATE CONVERSION FROM MONGO DB FORMAT TO DATE FORMAT
+
+    const setDate = (date: any) => {
+        const dateObj = new Date(date);
+        return format(dateObj, 'dd-MM-yyyy');
+    }
+
 return (
-    <div className='flex flex-col gap-5 px-5 text-black w-full'>
+    <div className='flex flex-col gap-5 px-2 text-black w-full sm:px-5'> 
         {isLoading ? (
-            <div className="flex items-center justify-center" >
-                <img src={Loading} alt="Loading..." className='m-auto w-1/2' />
+            <div className="flex items-center justify-center">
+                <img src={Loading} alt="Loading..." className='m-auto w-1/2' /> 
             </div>
             ) : (
             <div>
-                <figure className='flex gap-4' >
-                    <IoIosPricetags size="3rem" />
-                    <h1 className='font-bold pb-2 text-5xl'>My Tickets</h1>
-                </figure>
+                <Heading
+                    ContainerStyle="flex gap-2 justify-center xl:justify-start"
+                    Children={<IoIosPricetags  size="3rem" />}
+                    TextStyle="font-bold text-5xl"
+                    HeadingText="My Tickets"
+                />
                 <hr />
                 <br />
-                <TableContainer  component={Paper} sx={{ overflow: 'hidden' }} >
-                    <TableHeading
-                        EighthHeading = 'Action'
-                        SecondHeading = 'Status'
-                        FirstHeading = 'Priority'
-                        FifthHeading = 'Ticket Type'
-                        ThirdHeading = 'Ticket Title'
-                        SixthHeading = 'Submitted By'
-                        SeventhHeading = 'Created On'
-                        FourthHeading = 'Project Title'
-                    />
-                    <TableBody>
+                <section className="items-center justify-center hidden xl:flex">
+                    <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '1150px' }} >
+                        <TableHeading
+                            EighthHeading = 'Action'
+                            SecondHeading = 'Status'
+                            FirstHeading = 'Priority'
+                            FifthHeading = 'Ticket Type'
+                            ThirdHeading = 'Ticket Name'
+                            SixthHeading = 'Submitted By'
+                            SeventhHeading = 'Created On'
+                            FourthHeading = 'Project Name'
+                        />
+                        <TableBody>
+                            {
+                                (Tickets.length > 0) ? 
+                                Tickets.map((Ticket: any) => (
+                                    <TableOutput 
+                                        ID={Ticket._id}
+                                        Navigate={`/TicketDetails/${Ticket._id}`}
+                                        FirstOutput={Ticket.Priority}
+                                        SecondOutput={Ticket.Status}
+                                        ThirdOutput={Ticket.Name}
+                                        FourthOutput={Ticket.Project}
+                                        FifthOutput={Ticket.Category} 
+                                        SixthOutput={Ticket.Submitted}
+                                        SeventhOutput={setDate(Ticket.Date)} 
+                                        children={<FaArchive id='Archive' size="1.8rem" className='cursor-pointer p-1 rounded' color="red" onClick={() => handleArchive(Ticket._id)} />}
+                                    />
+                                )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
+                            }
+                        </TableBody>
+                    </TableContainer>
+                </section>
+                <section className="items-center justify-center hidden sm:flex xl:hidden"> 
+                    <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '730px' }} >
+                        <Table_Heading
+                            SecondHeading = 'Ticket Name'
+                            FirstHeading = 'Priority'
+                            FifthHeading = 'Submitted By'
+                            ThirdHeading = 'Project Name'
+                            FourthHeading = 'Ticket Type'
+                        />
+                        <TableBody>
                         {
                             (Tickets.length > 0) ? 
-                            Tickets.map((Ticket: any) => (
-                                <TableOutput 
+                            Tickets.map((Ticket: any) =>  (
+                                <Table_Body
                                     ID={Ticket._id}
+                                    Navigate={`/TicketDetails/${Ticket._id}`}
                                     FirstOutput={Ticket.Priority}
-                                    SecondOutput={Ticket.Status}
-                                    ThirdOutput={Ticket.Title}
-                                    FourthOutput={Ticket.Projects}
-                                    FifthOutput={Ticket.Category}
-                                    SixthOutput={Ticket.Submitted}
-                                    SeventhOutput={Ticket.Date}
-                                    Navigate={() => navigate(`/Ticket/${Ticket._id}`)}
-                                    Delete={() => handleDelete(Ticket._id)}
-                                    Archive={() => handleArchive(Ticket._id)}
+                                    SecondOutput={Ticket.Name}
+                                    ThirdOutput={Ticket.Project}
+                                    FourthOutput={Ticket.Category}
+                                    FifthOutput={Ticket.Submitted}
                                 />
-                            )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
+                                )
+                            ) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
                         }
-                    </TableBody>
-                </TableContainer>
+                        </TableBody>
+                    </TableContainer>
+                </section>
+                <section className="flex flex-col sm:hidden">
+                    <TableHead
+                        FirstHeading="Ticket Name"
+                        SecondHeading="Project Name"
+                        ThirdHeading="Ticket Type"
+                    />
+                    {
+                        (Tickets.length > 0) ? 
+                        Tickets.map((Ticket: any) =>  (
+                            <TableResults 
+                                ID={Ticket._id}
+                                FirstOutput={Ticket.Name}
+                                SecondOutput={Ticket.Project}
+                                ThirdOutput={Ticket.Category}
+                                Navigate={`/TicketDetails/${Ticket._id}`}
+                            />
+                        )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-2xl'>No Tickets Found.</h2> )
+                    }
+                </section>
             </div>
             )
         }
