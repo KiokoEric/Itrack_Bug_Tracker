@@ -6,7 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '../../../Components/Common/Button/Button';
-// import { useGetUserID } from '../../../Components/Hooks/useGetUserID';
+import Heading from '../../../Components/Common/Heading/Heading';
+import { useGetUserID } from '../../../Components/Hooks/useGetUserID';
 
 interface FormValues {
     Name: string;
@@ -20,36 +21,49 @@ interface FormValues {
 
 const Create_Ticket: React.FC = () => {
 
-    // const userOwner = useGetUserID()
-    const [ Users, setUsers ] = useState([])
-    const [ Success, setSuccess ] = useState('')
-    const [ Cookie,_ ] = useCookies(["auth_token"]);
+    const userOwner = useGetUserID()
+    const [ Cookie,_ ] = useCookies(["auth_token"]) 
+
+     // USESTATE HOOK
+    
+    const [ Users, setUsers ] = useState<[]>([])
+    const [Projects,  setProjects] = useState<[]>([])
+    const [ Success, setSuccess ] = useState<string>('')
+    
+    // CREATION OF THE TICKET ZOD SCHEMA
 
     const TicketSchema = z.object({
+        userOwner: z.any().default(userOwner),
         Name: z.string().min(1, 'Name is required'),
         Category: z.string().min(1, 'Category is required'),
         Priority: z.string().min(1, 'Priority is required'),
         Status: z.string().min(1, 'Ticket status is required'),
+        Project: z.string().min(1, 'Project name is required'),
         Submitted: z.string().min(1, 'Submitted by is required'),
-        Project: z.string().min(1, 'Project title are required'),
         Description: z.string().min(1, 'Description is required'),
     });
+
+    type FormData = z.infer<typeof TicketSchema>;
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: zodResolver(TicketSchema),
     });
 
-    const AddTicket: SubmitHandler<FormValues> = async () => {
-        await axios.post("https://localhost:4000/Ticket/AddTicket", {
+    // ADD TICKET FUNCTION
+
+    const AddTicket: SubmitHandler<FormValues> = async (data: FormData) => {
+        await axios.post("http://localhost:4000/Ticket/AddTicket", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
-        setSuccess('Ticket has been successfully added.') 
+        setSuccess('Ticket has been successfully created.') 
     };
+
+    // FETCHING ITRACK USERS
 
     useEffect(() => {
 
         const FetchUsers = () => {
-            axios.get(`https://localhost:4000/Users/`, {
+            axios.get(`http://localhost:4000/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -61,36 +75,61 @@ const Create_Ticket: React.FC = () => {
 
     },[])
 
-return (
-    <div className='flex flex-col gap-5 px-5 text-black w-full'>
-        <section>
-            <figure className='flex gap-4' >
-                <GiTicket size="3rem" />
-                <h1 className='font-bold pb-2 text-5xl'>Create Ticket</h1>
-            </figure>
+    // FETCHING ALL PROJECTS CREATED BY ITRACK USERS
+
+    useEffect(() => {
+
+        const FetchProject = () => {
+            axios.get(`http://localhost:4000/Projects/Projects`, {
+            headers: { authorization: Cookie.auth_token },
+            }) 
+            .then((Response) => {
+                setProjects(Response.data)
+            })
+        } 
+    
+        FetchProject()
+
+    },[])
+
+    return (
+        <div className='flex flex-col gap-5 mb-5 px-5 text-black w-screen'>
+            <Heading
+                ContainerStyle="flex gap-2 justify-center sm:justify-start"
+                Children={<GiTicket size="3rem" />}
+                TextStyle="font-bold text-5xl"
+                HeadingText="Create Ticket"
+            />
             <hr />
-        </section>
-        <section>
-            <form onSubmit={handleSubmit(AddTicket)} method="post" encType="multipart/form-data" className='flex flex-col gap-10'>
+            <form onSubmit={handleSubmit(AddTicket)} method="post" encType="multipart/form-data" className='flex flex-col gap-10 px-2 w-12/12'>
                 <div className='flex flex-col gap-4'>
                     <label className='font-bold' htmlFor="">Ticket Name</label> 
-                    <input placeholder="Enter Ticket Name..." {...register('Name', { required: 'Name is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
+                    <input placeholder="Enter Ticket Name..." {...register('Name', { required: 'Name is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required />
                     {errors.Name && <p className="text-center text-red-700">{errors.Name.message}</p>}
                 </div>
                 <div className='flex flex-col gap-4'>
                     <label className='font-bold' htmlFor="">Project Name</label> 
-                    <input placeholder="Enter Project Name..." {...register('Project', { required: 'Project title is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
+                    <select id="Project" {...register('Project', { required: 'Project is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required>
+                            <option value="">Select from the options below</option>
+                            {
+                            Projects.map((Project: any) => {
+                                return(
+                                    <option key={Project._id} value={Project.Name}>{Project.Name}</option>
+                                )
+                            })
+                            } 
+                    </select> 
                     {errors.Project && <p className="text-center text-red-700">{errors.Project.message}</p>}
                 </div>
                 <div className='flex flex-col gap-4'>
                     <label className='font-bold' htmlFor="">Description</label> 
-                    <textarea placeholder="Enter Description..." {...register('Description', { required: 'Description is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-full' required />
+                    <textarea placeholder="Enter Description..." {...register('Description', { required: 'Description is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required />
                     {errors.Description && <p className="text-center text-red-700">{errors.Description.message}</p>}
                 </div>
-                <section className='flex gap-10 justify-between'>
-                    <div className='flex flex-col gap-4'>
+                <section className='grid grid-cols-1 gap-10 sm:justify-between sm:grid-cols-2 w-12/12'>
+                    <div className='flex flex-col gap-4 mb-5'>
                         <label className='font-bold' htmlFor="">Ticket Category</label> 
-                        <select id="Select" {...register('Category', { required: 'Category is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-120' required>
+                        <select id="Select" {...register('Category', { required: 'Category is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required>
                             <option value="">Select from the options below</option>
                             <option value="Defect">Defect</option>
                             <option value="Documentation">Documentation</option>
@@ -102,7 +141,7 @@ return (
                     </div>
                     <div className='flex flex-col gap-4'>
                         <label className='font-bold' htmlFor="">Status</label> 
-                        <select id="Select" {...register('Status', { required: 'Status is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-120' required>
+                        <select id="Select" {...register('Status', { required: 'Status is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required>
                             <option value="">Select from the options below</option>
                             <option value="Open">Open</option>
                             <option value="In_Progress">In Progress</option>
@@ -112,43 +151,42 @@ return (
                         {errors.Status && <p className="text-center text-red-700">{errors.Status.message}</p>}
                     </div>
                 </section>
-                <section className='flex gap-10 justify-between'>
-                    <div className='flex flex-col gap-4'>
-                        <label className='font-bold' htmlFor="">Priority</label> 
-                        <select id="Select" {...register('Priority', { required: 'Priority is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-120' required>
-                            <option value="">Select from the options below</option>
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                            <option value="Critical">Critical</option>
-                        </select>
-                        {errors.Priority && <p className="text-center text-red-700">{errors.Priority.message}</p>}
-                    </div>
-                    <div className='flex flex-col gap-4'>
-                        <label className='font-bold' htmlFor="">Project Manager</label> 
-                        <select id="Select" {...register('Submitted', { required: 'Submitted by is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-120' required >
-                            <option value="">Select from the options below</option>
-                            {
-                            Users.map((User: any) => {
-                                return(
-                                    <option value={User.Name}>{User.Name}</option>
-                                )
-                            })
-                            }
-                        </select>
-                        {errors.Submitted && <p className="text-center text-red-700">{errors.Submitted.message}</p>}
-                    </div>
-                </section>
-                <div className='flex flex-col items-center justify-center' >
-                    <h4 className='font-bold text-center text-green-700'>{Success}</h4>
-                    <Button
-                        ButtonStyle='bg-red-800 cursor-pointer text-center text-white px-3 py-1 rounded w-56'
-                        ButtonText='Create Ticket'
-                        onClick={handleSubmit(AddTicket)} 
-                    />
+                <section className='grid grid-cols-1 gap-10 sm:justify-between sm:grid-cols-2 w-12/12'>
+                <div className='flex flex-col gap-4 mb-5'>
+                    <label className='font-bold' htmlFor="">Priority</label> 
+                    <select id="Select" {...register('Priority', { required: 'Priority is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required>
+                        <option value="">Select from the options below</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                    {errors.Priority && <p className="text-center text-red-700">{errors.Priority.message}</p>}
                 </div>
-            </form>
-        </section>
+                <div className='flex flex-col gap-4'>
+                    <label className='font-bold' htmlFor="">Project Manager</label> 
+                    <select id="Select" {...register('Submitted', { required: 'Submitted by is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-12/12' required >
+                        <option value="">Select from the options below</option>
+                        {
+                        Users.map((User: any) => {
+                            return(
+                                <option value={User.Name}>{User.Name}</option>
+                            )
+                        })
+                        }
+                    </select>
+                    {errors.Submitted && <p className="text-center text-red-700">{errors.Submitted.message}</p>}
+                </div>
+            </section>
+            <div className='flex flex-col items-center justify-center' >
+                <h4 className='font-bold text-center text-green-700'>{Success}</h4>
+                <Button
+                    ButtonStyle='bg-red-800 cursor-pointer text-center text-white px-3 py-1 rounded w-56'
+                    ButtonText='Create Ticket'
+                    onClick={handleSubmit(AddTicket)} 
+                />
+            </div>
+        </form>
     </div>
 )
 }
