@@ -18,29 +18,168 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-track {
   background-color: black;
 }
-:root {
-  --LightBlue: #9EC8B9;
-  --LightGreen: #5C8374;
-  --DarkGreen: #1B4242;
-  --DarkBlue: #092635;
-}
 body {
   font-family: 'Instrument Serif', serif;
   font-size: 18px;
+  overflow-x: hidden;
 }
 .App {
   background-color: white;
   display: flex;
   flex-direction: row;
-  margin: auto;
   column-gap: 1.5rem;
+  margin: auto;
   width: 100%;
 }
 #SideBar {
   min-height: 97.5vh;
 }
+#Indicator {
+  content: "";
+  border-radius: 5px;
+  height: 15px;
+  width: 10px;
+}
 #TableHead {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+#Edit {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Edit:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Edit Project";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 90px;
+  z-index: 1;
+}
+#Delete {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Delete:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Delete Project";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 100px;
+  z-index: 1;
+}
+#Archive {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Archive:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Archive Project";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
+}
+#Restore {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Restore:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Restore Project";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
+}
+#ArchiveTicket {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#ArchiveTicket:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Archive Ticket";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
+}
+#EditTicket {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#EditTicket:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Edit Ticket";
+  cursor: pointer;
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
 }
