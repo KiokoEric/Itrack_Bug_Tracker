@@ -9,7 +9,7 @@ import Project from "../../../Components/Common/Project/Project";
 import TableOutput from "../../../Components/Common/TableOutput/TableOutput";
 import TableHeading from "../../../Components/Common/TableHead/TableHeading";
 
-const Information:React.FC = () => {
+const Project_Information:React.FC = () => {
 
     const { id } = useParams()
     const [Cookie, _] = useCookies(["auth_token"])
@@ -140,4 +140,4 @@ return (
 )
 }
 
-export default Information
+export default Project_Information
