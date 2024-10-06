@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import Axios from "axios";
+import axios from "axios";
 import React from 'react';
 import { ImUser } from "react-icons/im";
 import { useSnackbar } from 'notistack';
@@ -8,71 +8,163 @@ import LoginImage from "../../../assets/Login.jpg";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '../../../Components/Common/Button/Button';
+import Heading from '../../../Components/Common/Heading/Heading';
 
 interface FormValues {
     Email: string;
     Password: string;
 };
+const Login: React.FC  = () => { 
 
-const Login: React.FC  = () => {
+    // CREATION OF THE LOGIN ZOD SCHEMA
 
     const LoginSchema = z.object({
         Email: z.string().min(1, { message: 'Email is required'}),
         Password: z.string().min(1, { message: 'Password is required'}),
     });
 
-    const [_,setCookie] = useCookies(["auth_token"]);
     const { enqueueSnackbar } = useSnackbar();
+    const [_,setCookie] = useCookies(["auth_token"]);
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: zodResolver(LoginSchema)
     });
 
+    // ONLOGIN FUNCTION
+
     const onLogin : SubmitHandler<FormValues> = async (data) => {
         try {
-            const response = await Axios.post("http://localhost:4000/Users/Login", data)
+            const response = await axios.post("http://localhost:4000/Users/Login", data)
                 setCookie("auth_token", response.data.Token)
                 window.localStorage.setItem("UserID", response.data.UserID)
-                enqueueSnackbar("Logged in successfully!" , {variant: "success"}) 
+                enqueueSnackbar("Logged in successfully!" , { 
+                    variant: 'success',
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'right', 
+                    },
+                }) 
                 setTimeout(() => {
                     window.location.reload();
                 }, 1500);
         } catch (error) { 
-            enqueueSnackbar("Login unsuccessful!" , {variant: "error"})
+            enqueueSnackbar("Login unsuccessful!" , { 
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                },
+            })
+            console.log(error)
+        }
+    }
+
+    // DEMO LOGIN FUNCTION
+
+    const DemoLogin = async (e: any) => {
+        e.preventDefault()
+        const data = {
+            Email : "kiokoerick040@gmail.com" , Password : "Victory2024"
+        }
+        try {
+                const response = await axios.post("http://localhost:4000/Users/Login", data)
+                setCookie("auth_token", response.data.Token)
+                window.localStorage.setItem("UserID", response.data.UserID)
+                enqueueSnackbar("Logged in successfully!" , { 
+                    variant: 'success',
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'right', 
+                    },
+                })
+                window.location.reload();
+        } catch (error) { 
+            enqueueSnackbar("Login unsuccessful!" , { 
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                },
+            })
+            console.log(error) 
+        }
+    }
+
+    // ADMINISTRATOR LOGIN FUNCTION
+
+    const Administrator = async (e: any) => {
+        e.preventDefault()
+        const data = {
+            Email : "faithkanini@gmail.com" , Password : "Triumph2024"
+        }
+        try {
+            const response = await axios.post("http://localhost:4000/Users/Administrator", data)
+                setCookie("auth_token", response.data.Token)
+                window.localStorage.setItem("Administrator", "Administration")
+                enqueueSnackbar("Logged in successfully!" , { 
+                    variant: 'success',
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'right', 
+                    },
+                    })
+                    window.location.reload();
+        } catch (error) { 
+            enqueueSnackbar("Login unsuccessful!" , { 
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                },
+            }) 
             console.log(error)
         }
     }
 
 return (
-    <div>
-        <figure className='flex gap-4' >
-            <ImUser size="3rem" />
-            <h1 className='font-bold pb-2 text-5xl'>Login</h1>
-        </figure>
+    <div className='flex flex-col gap-5 w-screen'>
+        <Heading
+            ContainerStyle="flex gap-2 items-center justify-center xl:items-start xl:justify-start"
+            Children={<ImUser size="3rem" />}
+            TextStyle="font-bold text-5xl"
+            HeadingText="Login"
+        />
         <hr />
-        <section className='grid grid-cols-2 gap-5 items-center justify-center'>
-            <figure>
+        <section className='grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-center m-auto mt-1 w-11/12'>
+            <figure className='hidden lg:flex'>
                 <img src={LoginImage} alt="LoadingImage" />
             </figure>
-            <form method="post" onSubmit={handleSubmit(onLogin)} encType="multipart/form-data" className='flex flex-col items-center justify-start gap-2'>
+            <form method="post" onSubmit={handleSubmit(onLogin)} encType="multipart/form-data" className='flex flex-col items-center justify-center gap-2'>
                 <div className='mb-10'>
-                    <h2 className='text-5xl'>Welcome to Itrack</h2>
+                    <h2 className='text-center text-5xl'>Welcome to Itrack</h2>
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label className='font-bold' htmlFor="Email">Email</label> 
-                    <input placeholder="Enter Email..." {...register('Email', { required: 'Email is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-96' required />
+                    <input placeholder="Enter Email..." {...register('Email', { required: 'Email is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-80 lg:w-96' required />
                     {errors.Email && <p className="text-center text-red-700">{errors.Email.message}</p>}
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label className='font-bold' htmlFor="Password">Password</label> 
-                    <input placeholder="Enter Password..." {...register('Password', { required: 'Password is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-96' required />
+                    <input placeholder="Enter Password..." {...register('Password', { required: 'Password is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-80 lg:w-96' required />
                     {errors.Password && <p className="text-center text-red-700">{errors.Password.message}</p>}
                 </div>
-                <Button
-                    ButtonText='Login'
-                    ButtonStyle='bg-black cursor-pointer mt-1 text-center text-white px-3 py-1 rounded w-40'
-                    onClick={handleSubmit(onLogin)}
-                />
+                <div className='flex flex-col gap-4 sm:flex-row'>
+                    <Button
+                        ButtonText='Login'
+                        ButtonStyle='bg-black cursor-pointer mt-1 text-center text-white px-3 py-1 rounded w-40'
+                        onClick={handleSubmit(onLogin)}
+                    />
+                    <Button
+                        ButtonText='Demo Login'
+                        ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                        onClick={DemoLogin}
+                    />
+                    <Button
+                        ButtonText='Administrator Login'
+                        ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                        onClick={Administrator}
+                    />
+                </div>
             </form>
         </section>
     </div>
