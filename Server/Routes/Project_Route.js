@@ -8,8 +8,8 @@ const Archive = require("../Models/ArchivedProjects");
 
 const myPassword = process.env.Password
 
-ProjectRoute.use(cookieParser())
 dotenv.config();
+ProjectRoute.use(cookieParser())
 
 const verifyToken = async (req, res, next) => {
 
@@ -26,6 +26,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A PROJECT
+
 ProjectRoute.post("/AddProject", verifyToken ,async (req, res) => { 
     const Projects = new Project(req.body)
 
@@ -37,7 +39,9 @@ ProjectRoute.post("/AddProject", verifyToken ,async (req, res) => {
     }
 })
 
-ProjectRoute.get("/AllProjects", async (req, res) => { 
+// GETTING ALL THE PROJECTS CREATED BY ALL ITRACK USERS
+
+ProjectRoute.get("/Projects", async (req, res) => { 
     try{
         const AllProjects = await Project.find() 
         res.send(AllProjects)
@@ -47,7 +51,9 @@ ProjectRoute.get("/AllProjects", async (req, res) => {
     }
 })
 
-ProjectRoute.get("/AllProjectsLength", async (req, res) => { 
+// FETCHING THE TOTAL NUMBER OF ITRACK PROJECTS
+
+ProjectRoute.get("/ProjectsTotal", async (req, res) => { 
     try{
         const AllProjects = await Project.find() 
         const ArrayLength = AllProjects.length;
@@ -59,6 +65,8 @@ ProjectRoute.get("/AllProjectsLength", async (req, res) => {
     }
 })
 
+// GETTING ALL THE PROJECTS CREATED BY A SINGLE USER BY THEIR USER ID
+
 ProjectRoute.get('/:userId/Project', async (req, res) => {
     const userId = req.params.userId;
     try {
@@ -69,7 +77,7 @@ ProjectRoute.get('/:userId/Project', async (req, res) => {
     }
 });
 
-// UPDATE
+// UPDATING A PROJECT BASED ON THE PROJECT ID
 
 ProjectRoute.put("/:id", async (req, res) => {
     try{
@@ -81,7 +89,7 @@ ProjectRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING A PROJECT BASED ON THE PROJECT ID
 
 ProjectRoute.delete("/:id", async (req, res) => {
     try{
@@ -92,6 +100,8 @@ ProjectRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// GETTING PROJECT DETAILS BY ITS ID
 
 ProjectRoute.get('/:id', async (req, res) => {
     try {
@@ -105,21 +115,24 @@ ProjectRoute.get('/:id', async (req, res) => {
     }
 });
 
-ProjectRoute.get(`/Title/:Title`, async (req, res) => {
-    const Title = req.params.Title
+// GETTING THE NAMES OF PROJECTS CREATED ON ITRACK
+
+ProjectRoute.get(`/Name/:Name`, async (req, res) => {
+    const Name = req.params.Name
 
     try { 
-    const Projects = await Project.findOne({ Title: Title }) 
+    const Projects = await Project.findOne({ Name: Name }) 
 
     if (!Projects) {
         return res.status(404).json({ message: 'Project not found' })
     } 
-
     res.json(Projects);
     } catch (error) { 
     res.status(500).json({ message: 'Server Error' })  
     }
 });
+
+// ARCHIVING OF A PROJECT
 
 ProjectRoute.post('/moveProject/:projectId', async (req, res) => {
     const { projectId } = req.params;
