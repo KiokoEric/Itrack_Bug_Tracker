@@ -8,8 +8,8 @@ const Archive = require("../Models/ArchivedTickets");
 
 const myPassword = process.env.Password
 
-ArchiveRoute.use(cookieParser())
 dotenv.config();
+ArchiveRoute.use(cookieParser())
 
 const verifyToken = async (req, res, next) => {
 
@@ -26,6 +26,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A TICKET TO ARCHIVE
+
 ArchiveRoute.post("/AddArchive", verifyToken ,async (req, res) => { 
     const Archives = new Archive(req.body)
 
@@ -37,6 +39,8 @@ ArchiveRoute.post("/AddArchive", verifyToken ,async (req, res) => {
     }
 })
 
+// GETTING ALL THE ARCHIVED TICKETS
+
 ArchiveRoute.get("/Archives", async (req, res) => { 
     try{
         const Archives = await Archive.find() 
@@ -46,6 +50,8 @@ ArchiveRoute.get("/Archives", async (req, res) => {
         res.send(err)  
     }
 })
+
+// FETCHING THE TOTAL NUMBER OF ARCHIVED TICKETS
 
 ArchiveRoute.get("/ArchivesLength", async (req, res) => { 
     try{
@@ -59,6 +65,8 @@ ArchiveRoute.get("/ArchivesLength", async (req, res) => {
     }
 })
 
+// GETTING TICKET DETAILS BY ITS ID
+
 ArchiveRoute.get('/:id', async (req, res) => {
     try {
     const Tickets = await Archive.findById(req.params.id);
@@ -71,6 +79,7 @@ ArchiveRoute.get('/:id', async (req, res) => {
     }
 });
 
+// DELETING AN ARCHIVED TICKET BASED ON THE TICKET ID
 
 ArchiveRoute.delete("/:id", async (req, res) => {
     try{
@@ -82,12 +91,14 @@ ArchiveRoute.delete("/:id", async (req, res) => {
     }
 })
 
+// RESTORING AN ARCHIVED TICKET
+
 ArchiveRoute.post('/moveTicket/:TicketId', async (req, res) => { 
     const { TicketId } = req.params;
     
     try {
         // Find the ticket in the source model
-        const Archives = await Archive.findById(ticketId);
+        const Archives = await Archive.findById(TicketId);
     
         // Create a new ticket in the destination model
         const Tickets = new Ticket({
