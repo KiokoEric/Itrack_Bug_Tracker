@@ -8,8 +8,8 @@ const Archive = require("../Models/ArchivedProjects");
 
 const myPassword = process.env.Password
 
-ArchivedProjectRoute.use(cookieParser())
 dotenv.config();
+ArchivedProjectRoute.use(cookieParser())
 
 const verifyToken = async (req, res, next) => {
 
@@ -26,6 +26,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A PROJECT TO ARCHIVES
+
 ArchivedProjectRoute.post("/AddArchive", verifyToken ,async (req, res) => { 
     const Archives = new Archive(req.body)
 
@@ -37,6 +39,8 @@ ArchivedProjectRoute.post("/AddArchive", verifyToken ,async (req, res) => {
     }
 })
 
+// GETTING ALL THE ARCHIVED PROJECTS
+
 ArchivedProjectRoute.get("/Archives", async (req, res) => { 
     try{
         const Archives = await Archive.find() 
@@ -46,6 +50,8 @@ ArchivedProjectRoute.get("/Archives", async (req, res) => {
         res.send(err)  
     }
 })
+
+// FETCHING THE TOTAL NUMBER OF ARCHIVED PROJECTS
 
 ArchivedProjectRoute.get("/ArchivesLength", async (req, res) => { 
     try{
@@ -57,6 +63,8 @@ ArchivedProjectRoute.get("/ArchivesLength", async (req, res) => {
         res.send(err)  
     }
 })
+
+// GETTING ARCHIVED PROJECT DETAILS BY ITS ID
 
 ArchivedProjectRoute.get('/:id', async (req, res) => {
     try {
@@ -70,6 +78,8 @@ ArchivedProjectRoute.get('/:id', async (req, res) => {
     }
 });
 
+// DELETING AN ARCHIVED TICKET BASED ON THE TICKET ID
+
 ArchivedProjectRoute.delete("/:id", async (req, res) => {
     try{
         const Tickets = await Archive.findByIdAndDelete(req.params.id)
@@ -79,6 +89,8 @@ ArchivedProjectRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// RESTORING AN ARCHIVED PROJECT
 
 ArchivedProjectRoute.post('/moveProject/:projectId', async (req, res) => {
     const { projectId } = req.params;
