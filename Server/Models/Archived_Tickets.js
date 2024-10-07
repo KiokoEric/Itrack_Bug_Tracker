@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
-const ArchiveSchema = new mongoose.Schema ({ 
+const ArchiveTicketSchema = new mongoose.Schema ({ 
     Name: {
         type: String,
         required: true
     },
-    Projects: {
+    Project: {
         type: String,
         required: true  
     },
@@ -33,7 +33,7 @@ const ArchiveSchema = new mongoose.Schema ({
         required: true
     }, 
     Date: {
-        type: Date,
+        type: String,
         default: Date.now 
     }, 
     userOwner: {
@@ -43,4 +43,4 @@ const ArchiveSchema = new mongoose.Schema ({
     }
 })
 
-module.exports = mongoose.model("ArchivedTickets", ArchiveSchema)  
+module.exports = mongoose.model("ArchivedTickets", ArchiveTicketSchema)  
