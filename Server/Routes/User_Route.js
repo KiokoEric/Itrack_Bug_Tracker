@@ -1,15 +1,17 @@
+const dotenv = require('dotenv');
+const bcrypt = require("bcryptjs");
 const express = require('express');
 const UserRouter = express.Router();
-const cookieParser = require("cookie-parser");
-const User = require("../Models/Users");
-const dotenv = require('dotenv');
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const User = require("../Models/Users");
+const cookieParser = require("cookie-parser");
 
 const myPassword = process.env.Password
 
-UserRouter.use(cookieParser())
 dotenv.config();
+UserRouter.use(cookieParser())
+
+// REGISTRATION OF A USER
 
 UserRouter.post("/Registration", async (req, res) => {
 
@@ -37,6 +39,8 @@ UserRouter.post("/Registration", async (req, res) => {
     }
 })
 
+// USER LOGIN
+
 UserRouter.post("/Login", async (req, res) => {
 
     // Checking if the email is in the database
@@ -56,6 +60,8 @@ UserRouter.post("/Login", async (req, res) => {
     }  
 })
 
+// ADMINISTRATOR LOGIN
+
 UserRouter.post('/Administrator', async (req, res) => {
     // Checking if the email is in the database
 
@@ -73,6 +79,8 @@ UserRouter.post('/Administrator', async (req, res) => {
         res.json({Token});
     }  
 });
+
+// UPDATING A USER'S DETAILS
 
 UserRouter.put("/:id", async (req, res) => {
     const userId = req.params.id;
@@ -94,8 +102,7 @@ UserRouter.put("/:id", async (req, res) => {
     }
 }) 
 
-
-// ALL USERS
+// FETCHING ALL ITRACK USERS
 
 UserRouter.get('/', async (req, res) => {
     try {
@@ -106,7 +113,7 @@ UserRouter.get('/', async (req, res) => {
     }
 })
 
-// USERS LENGTH
+// FETCHING THE TOTAL NUMBER OF ITRACK USERS
 
 UserRouter.get('/UsersLength', async (req, res) => {
     try {
@@ -118,6 +125,8 @@ UserRouter.get('/UsersLength', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// GETTING A USER BY THEIR ID
 
 UserRouter.get('/:id', async (req, res) => { 
     try {
@@ -131,7 +140,7 @@ UserRouter.get('/:id', async (req, res) => {
     }
 });
 
-// DELETE
+// DELETING OF A USER PROFILE ON ITRACK
 
 UserRouter.delete("/Delete/:id", async (req, res) => {
     try {
@@ -146,6 +155,8 @@ UserRouter.delete("/Delete/:id", async (req, res) => {
     }
 }) 
 
+// GETTING THE USER'S NAME
+
 UserRouter.get('/:userId/Name', async (req, res) => { 
 
     try {
@@ -158,6 +169,8 @@ UserRouter.get('/:userId/Name', async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
     }
 });
+
+// USER'S LOGOUT
 
 UserRouter.get("/Logout", (req, res) => { 
     res.clearCookie("Token"); 
