@@ -25,6 +25,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A COMMENT
+
 CommentRoute.post("/AddComment", verifyToken ,async (req, res) => {
     const Comments = new Comment(req.body)
 
@@ -36,7 +38,9 @@ CommentRoute.post("/AddComment", verifyToken ,async (req, res) => {
     }
 })
 
-CommentRoute.get("/AllComments", async (req, res) => { 
+// GETTING ALL THE COMMENTS CREATED BY ALL ITRACK USERS
+
+CommentRoute.get("/Comments", async (req, res) => { 
     try{
         const AllComments = await Comment.find() 
         res.json(AllComments)
@@ -45,6 +49,8 @@ CommentRoute.get("/AllComments", async (req, res) => {
         res.send(err)  
     }
 })
+
+// GETTING ALL THE COMMENTS CREATED BY A SINGLE USER BY THEIR USER ID
 
 CommentRoute.get('/:userId/Comments', async (req, res) => {
     const userId = req.params.userId;
@@ -56,7 +62,7 @@ CommentRoute.get('/:userId/Comments', async (req, res) => {
     }
 }); 
 
-// UPDATE
+// UPDATING A COMMENT BASED ON THE COMMENT ID
 
 CommentRoute.put("/:id", async (req, res) => {
     try{
@@ -68,7 +74,7 @@ CommentRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING A COMMENT BASED ON THE COMMENT ID
 
 CommentRoute.delete("/:id", async (req, res) => {
     try{
@@ -79,6 +85,8 @@ CommentRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// GETTING ALL THE COMMENTS CREATED FOR A CERTAIN TICKET
 
 CommentRoute.get(`/Comment/:TicketID`, async (req, res) => {
     const TicketID = req.params.TicketID
@@ -95,6 +103,8 @@ CommentRoute.get(`/Comment/:TicketID`, async (req, res) => {
     }
 });
 
+// GETTING ALL THE COMMENTS CREATED BY A SINGLE USER
+
 CommentRoute.get('/:TicketID/Name', async (req, res) => { 
 
     const userId = req.params.userId;
@@ -110,6 +120,7 @@ CommentRoute.get('/:TicketID/Name', async (req, res) => {
     }
 });
 
+// GETTING THE ID OF THE COMMENTATOR BY THE COMMENT
 
 CommentRoute.get('/Commentators/:commentatorId', (req, res) => {
     const commentatorId = req.params.commentatorId;
