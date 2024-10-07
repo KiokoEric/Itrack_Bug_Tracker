@@ -1,13 +1,13 @@
 const mongoose = require("mongoose")
-const IssueSchema = new mongoose.Schema ({
+const TicketSchema = new mongoose.Schema ({
     Name: {
         type: String,
         required: true
     },
-    Projects: {
+    Project: {
         type: String,
         required: true  
-    },
+    }, 
     Description: {
         type: String, 
         required: true 
@@ -39,4 +39,4 @@ const IssueSchema = new mongoose.Schema ({
     }
 })
 
-module.exports = mongoose.model("Issue", IssueSchema) 
+module.exports = mongoose.model("Ticket", TicketSchema) 
