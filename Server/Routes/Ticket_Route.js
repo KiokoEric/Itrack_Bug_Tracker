@@ -8,8 +8,8 @@ const Archive = require("../Models/ArchivedTickets");
 
 const myPassword = process.env.Password
 
-TicketRoute.use(cookieParser())
 dotenv.config();
+TicketRoute.use(cookieParser())
 
 const verifyToken = async (req, res, next) => {
 
@@ -26,6 +26,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A TICKET
+
 TicketRoute.post("/AddTicket", verifyToken ,async (req, res) => {
     const Tickets = new Ticket(req.body)
 
@@ -37,6 +39,8 @@ TicketRoute.post("/AddTicket", verifyToken ,async (req, res) => {
     }
 })
 
+// GETTING ALL THE TICKETS CREATED BY ALL ITRACK USERS
+
 TicketRoute.get("/Tickets", async (req, res) => { 
     try{
         const Tickets = await Ticket.find() 
@@ -47,7 +51,9 @@ TicketRoute.get("/Tickets", async (req, res) => {
     }
 })
 
-TicketRoute.get("/TicketsLength", async (req, res) => { 
+// FETCHING THE TOTAL NUMBER OF ITRACK TICKETS
+
+TicketRoute.get("/TicketsTotal", async (req, res) => { 
     try{
         const Tickets = await Ticket.find()  
         const ArrayLength = Tickets.length;
@@ -59,6 +65,8 @@ TicketRoute.get("/TicketsLength", async (req, res) => {
     }
 })
 
+// GETTING ALL THE TICKETS CREATED BY A SINGLE USER BY THEIR USER ID
+
 TicketRoute.get('/:userId/Tickets', async (req, res) => {
     const userId = req.params.userId;
     try {
@@ -69,7 +77,7 @@ TicketRoute.get('/:userId/Tickets', async (req, res) => {
     }
 }); 
 
-// UPDATE
+// UPDATING A TICKET BASED ON THE TICKET ID
 
 TicketRoute.put("/:id", async (req, res) => {
     try{
@@ -81,7 +89,7 @@ TicketRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING A TICKET BASED ON THE TICKET ID
 
 TicketRoute.delete("/:id", async (req, res) => {
     try{
@@ -93,7 +101,7 @@ TicketRoute.delete("/:id", async (req, res) => {
     }
 })
 
-// Ticket BY ID
+// GETTING TICKET DETAILS BY ITS ID
 
 TicketRoute.get('/:id', async (req, res) => {
     try {
@@ -107,20 +115,20 @@ TicketRoute.get('/:id', async (req, res) => {
     }
 });
 
-// PROJECT RELATED Ticket
+// PROJECT RELATED TICKET
 
-TicketRoute.get(`/Projects/:Projects`, async (req, res) => {
-    const Projects = req.params.Projects
+TicketRoute.get(`/Projects/:Project`, async (req, res) => {
+    const Projects = req.params.Project
 
     try {
-    const Tickets = await Ticket.find({ Projects: Projects }) 
+    const Tickets = await Ticket.find({ Project: Projects }) 
 
     if (!Tickets) {
-        return res.status(404).json({ message: 'Ticket not found' }) 
+        return res.status(404).json({ message: 'No Tickets Found' }) 
     }
     res.json(Tickets);
     } catch (error) {
-    res.status(500).json({ message: 'Why!!!' })
+    res.status(500).json({ message: 'Server Error' })
     }
 });
 
@@ -140,6 +148,8 @@ TicketRoute.get('/Priority/:Priority', async (req, res) => {
     res.status(500).json({ message: 'Server Error' }); 
     }
 }); 
+
+// FETCHING THE TOTAL NUMBER OF PRIORITY TICKETS ON ITRACK
 
 TicketRoute.get('/PriorityLength/:Priority', async (req, res) => {
     const Priority = req.params.Priority
@@ -170,6 +180,8 @@ TicketRoute.get('/Status/:Status', async (req, res) => {
     }
 });
 
+// FETCHING THE TOTAL NUMBER OF STATUS TICKETS ON ITRACK
+
 TicketRoute.get('/StatusLength/:Status', async (req, res) => {
     const Status = req.params.Status
 
@@ -199,6 +211,8 @@ TicketRoute.get('/Category/:Category', async (req, res) => {
     }
 });
 
+// FETCHING THE TOTAL NUMBER OF CATEGORY TICKETS ON ITRACK
+
 TicketRoute.get('/CategoryLength/:Category', async (req, res) => {
     const Category = req.params.Category
 
@@ -212,6 +226,8 @@ TicketRoute.get('/CategoryLength/:Category', async (req, res) => {
     }
 });
 
+// ARCHIVING OF A TICKET
+
 TicketRoute.post('/moveTicket/:TicketId', async (req, res) => {
 const { TicketId } = req.params;
 
@@ -222,7 +238,7 @@ try {
     // Create a new ticket in the destination model
     const Archives = new Archive({
         Name: Tickets.Name,
-        Projects: Tickets.Projects,
+        Project: Tickets.Project,
         Description: Tickets.Description, 
         Category: Tickets.Category,
         Priority: Tickets.Priority,
