@@ -96,13 +96,13 @@ return (
                                 children={
                                 <div className='flex items-start justify-center gap-2'>
                                     <Link id="Edit" to={`/Project/${Project._id}`} key={Project._id}>
-                                        <BiSolidEditAlt size='2.1rem' className='bg-black cursor-pointer p-1 rounded-full text-lg text-white' />
+                                        <BiSolidEditAlt size='2.1rem' className='bg-red-800 cursor-pointer p-1 rounded-full text-lg text-white' />
                                     </Link>
                                     <div id="Delete">
-                                        <FontAwesomeIcon icon={faTrash} id="Delete" className='bg-black cursor-pointer p-2 rounded-full text-white text-lg' onClick={() =>handleDelete(Project._id)} />
+                                        <FontAwesomeIcon icon={faTrash} id="Delete" className='bg-red-800 cursor-pointer p-2 rounded-full text-white text-lg' onClick={() =>handleDelete(Project._id)} />
                                     </div>
                                     <div id="Archive">
-                                        <FontAwesomeIcon icon={faBoxArchive} id="Archive" className='bg-black cursor-pointer p-2 rounded-full text-lg text-white' onClick={() => handleArchive(Project._id)} />
+                                        <FontAwesomeIcon icon={faBoxArchive} id="Archive" className='bg-red-800 cursor-pointer p-2 rounded-full text-lg text-white' onClick={() => handleArchive(Project._id)} />
                                     </div>
                                 </div>
                                 }   

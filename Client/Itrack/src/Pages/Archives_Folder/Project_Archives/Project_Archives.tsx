@@ -6,8 +6,9 @@ import Loading from "../../../assets/Loading_Image.gif";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Output from "../../../Components/Common/Output/Output";
 import Heading from "../../../Components/Common/Heading/Heading";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Projects_Archives: React.FC = () => {
 

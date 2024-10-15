@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const ArchiveRoute = express.Router();
 const Ticket = require("../Models/Tickets");
 const cookieParser = require("cookie-parser"); 
-const Archive = require("../Models/ArchivedTickets");
+const Archive = require("../Models/Archived_Tickets");
 
 const myPassword = process.env.Password
 

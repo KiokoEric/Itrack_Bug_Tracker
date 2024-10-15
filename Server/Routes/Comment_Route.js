@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const jwt = require("jsonwebtoken");
 const CommentRoute = express.Router();
-const Comment = require("../Models/Comment");
+const Comment = require("../Models/Comments");
 const cookieParser = require("cookie-parser"); 
 
 const myPassword = process.env.Password

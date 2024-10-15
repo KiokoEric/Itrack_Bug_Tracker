@@ -6,12 +6,12 @@ import { IoIosPricetags } from "react-icons/io";
 import React, { useEffect, useState } from 'react';
 import Output from "../../Components/Common/Output/Output";
 import Heading from "../../Components/Common/Heading/Heading";
-import TypeLabels from "../../Components/Charts/TicketType/TypeLabels";
-import TicketType from "../../Components/Charts/TicketType/TicketType";
-import TicketStatus from "../../Components/Charts/TicketStatus/TicketStatus";
-import StatusLabels from "../../Components/Charts/TicketStatus/StatusLabels";
-import PriorityLabels from "../../Components/Charts/TicketPriority/PriorityLabels";
-import TicketPriority from "../../Components/Charts/TicketPriority/TicketPriority";
+import TypeLabels from "../../Components/Charts/Ticket_Type/Type_Lables";
+import TicketType from "../../Components/Charts/Ticket_Type/Ticket_Type";
+import TicketStatus from "../../Components/Charts/Ticket_Status/Ticket_Status";
+import StatusLabels from "../../Components/Charts/Ticket_Status/Status_Labels";
+import PriorityLabels from "../../Components/Charts/Ticket_Priority/Priority_Labels";
+import TicketPriority from "../../Components/Charts/Ticket_Priority/Ticket_Priority";
 
 const Dashboard:React.FC = () => {
 

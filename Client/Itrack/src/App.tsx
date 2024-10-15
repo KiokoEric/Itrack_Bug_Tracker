@@ -4,13 +4,13 @@ import Login from './Pages/User/Login/Login';
 import { Routes, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar/SideBar';
 import { useGetUserID } from './Components/Hooks/useGetUserID';
-import ErrorBoundary from './Pages/ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from './Pages/Error_Boundary/Error_Boundary';
 import { AdministrationID } from './Components/Hooks/Administrator';
 const Delete = React.lazy(() => import('./Pages/User/Delete/Delete'))
 const Profile = React.lazy(() => import('./Pages/User/Profile/Profile'))
 const Dashboard = React.lazy(() => import('./Pages/Dashboard/Dashboard'))
 const Tickets = React.lazy(() => import('./Pages/Tickets_Folder/Tickets/Tickets'))
-const EditProfile = React.lazy(() => import('./Pages/User/EditProfile/EditProfile'))
+const EditProfile = React.lazy(() => import('./Pages/User/Edit_Profile/Edit_Profile'))
 const Projects = React.lazy(() => import('./Pages/Projects_Folder/Projects/Projects'))
 const Registration = React.lazy(() => import('./Pages/User/Registration/Registration'))
 const Administration = React.lazy(() => import('./Pages/Administration/Administration'))
@@ -20,12 +20,12 @@ const My_Projects = React.lazy(() => import('./Pages/Projects_Folder/My_Projects
 const Edit_Project = React.lazy(() => import('./Pages/Projects_Folder/Edit_Project/Edit_Project'))
 const Create_Ticket = React.lazy(() => import('./Pages/Tickets_Folder/Create_Ticket/Create_Ticket'))
 const Create_Project = React.lazy(() => import('./Pages/Projects_Folder/Create_Project/Create_Project'))
-const TicketArchives = React.lazy(() => import('./Pages/Archives_Folder/TicketArchives/TicketArchives'))
+const TicketArchives = React.lazy(() => import('./Pages/Archives_Folder/Ticket_Archives/Ticket_Archives'))
 const TicketDetailsPage = React.lazy(() => import('./Pages/Tickets_Folder/Ticket_Details/Ticket_Details'))
-const ProjectArchives = React.lazy(() => import('./Pages/Archives_Folder/ProjectArchives/ProjectArchives'))
+const ProjectArchives = React.lazy(() => import('./Pages/Archives_Folder/Project_Archives/Project_Archives'))
 const ProjectDetailsPage = React.lazy(() => import('./Pages/Projects_Folder/Project_Details/Project_Details'))
-const TicketInformation = React.lazy(() => import('./Pages/Archives_Folder/TicketInformation/TicketInformation'))
-const ProjectInformation = React.lazy(() => import('./Pages/Archives_Folder/ProjectInformation/ProjectInformation'))
+const TicketInformation = React.lazy(() => import('./Pages/Archives_Folder/Ticket_Information/Ticket_Information'))
+const ProjectInformation = React.lazy(() => import('./Pages/Archives_Folder/Project_Information/Project_Information'))
 
 function App() {
 

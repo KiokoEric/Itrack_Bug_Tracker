@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const Project = require("../Models/Projects");
 const ArchivedProjectRoute = express.Router();
 const cookieParser = require("cookie-parser"); 
-const Archive = require("../Models/ArchivedProjects");
+const Archive = require("../Models/Archived_Projects");
 
 const myPassword = process.env.Password
 

@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react';
 import Loading from "../../../assets/Loading_Image.gif";
 import { Paper, TableBody, TableContainer } from '@mui/material';
 import Project from "../../../Components/Common/Project/Project";
-import TableOutput from "../../../Components/Common/TableOutput/TableOutput";
-import TableHeading from "../../../Components/Common/TableHead/TableHeading";
+import TableOutput from "../../../Components/Common/Table_Output/Table_Output";
+import TableHeading from "../../../Components/Common/Table_Head/Table_Heading";
 
 const Project_Information:React.FC = () => {
 

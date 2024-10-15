@@ -14,7 +14,7 @@ app.use(cors({
     origin: ["http://localhost:5173"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
-}))
+})) 
 app.use(express.json())
 app.use(cookieParser()) 
 
@@ -27,18 +27,18 @@ mongoose.connect(dbUrl)
 
     // IMPORT ROUTES
 
-    const UserRoute = require("./Routes/UserRoute");
-    const TicketRoute = require("./Routes/TicketRoute"); 
-    const ProjectRoute = require("./Routes/ProjectRoute");
-    const CommentRoute = require("./Routes/CommentRoute");  
-    const ArchiveRoute = require("./Routes/ArchivedTicketsRoute");
-    const ArchivedProjectRoute = require("./Routes/ArchivedProjectsRoute"); 
+    const UserRoute = require("./Routes/User_Route");
+    const TicketRoute = require("./Routes/Ticket_Route"); 
+    const ProjectRoute = require("./Routes/Project_Route");
+    const CommentRoute = require("./Routes/Comment_Route");  
+    const ArchivedTicketRoute = require("./Routes/Archived_Ticket_Route");
+    const ArchivedProjectRoute = require("./Routes/Archived_Projects_Route"); 
     
     app.use("/Users", UserRoute);
     app.use("/Ticket", TicketRoute); 
     app.use("/Projects", ProjectRoute);
     app.use("/Comments", CommentRoute); 
-    app.use("/TicketArchives", ArchiveRoute);
+    app.use("/TicketArchives", ArchivedTicketRoute);
     app.use("/ProjectArchives", ArchivedProjectRoute);   
 
 app.listen(4000)      
