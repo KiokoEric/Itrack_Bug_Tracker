@@ -103,7 +103,7 @@ ArchiveRoute.post('/moveTicket/:TicketId', async (req, res) => {
         // Create a new ticket in the destination model
         const Tickets = new Ticket({
             Name: Archives.Name,
-            Projects: Archives.Projects,
+            Project: Archives.Project,
             Description: Archives.Description, 
             Category: Archives.Category,
             Priority: Archives.Priority,
