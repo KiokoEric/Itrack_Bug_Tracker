@@ -110,7 +110,7 @@ return (
                     }
                 />
             </section>
-            <section className="items-center justify-center hidden xl:flex">
+            <section className="items-center justify-center hidden mb-5 xl:flex">
                 <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '1150px' }}> 
                     <TableHeading
                         EighthHeading = 'Action'
@@ -143,7 +143,7 @@ return (
                     </TableBody>
                 </TableContainer>
             </section>
-            <section className="items-center justify-center hidden sm:flex xl:hidden"> 
+            <section className="items-center justify-center hidden mb-5 sm:flex xl:hidden"> 
                 <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '730px' }} >
                     <Table_Heading
                         SecondHeading = 'Ticket Name'
@@ -171,7 +171,7 @@ return (
                     </TableBody>
                 </TableContainer>
             </section>
-            <section className="flex flex-col sm:hidden">
+            <section className="flex flex-col mb-5 sm:hidden">
                 <TableHead
                     FirstHeading="Ticket Name"
                     SecondHeading="Project Name"
