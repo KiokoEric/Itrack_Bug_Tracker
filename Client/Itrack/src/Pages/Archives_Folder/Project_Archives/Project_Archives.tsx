@@ -94,10 +94,10 @@ return (
                             children={
                                 <div className='flex items-center justify-center gap-2'>
                                     <div id="Delete">
-                                        <FontAwesomeIcon icon={faTrash} id="Delete" className='bg-black cursor-pointer p-2 rounded-full text-lg text-white' onClick={() =>handleDelete(Project._id)} />
+                                        <FontAwesomeIcon icon={faTrash} id="Delete" className='bg-Blue cursor-pointer p-2 rounded-full text-lg text-white' onClick={() =>handleDelete(Project._id)} />
                                     </div>
                                     <div id="Restore">
-                                        <FontAwesomeIcon icon={faRotateLeft} className='bg-black cursor-pointer p-2 rounded-full text-lg text-white' onClick={() => handleArchive(Project._id)} />
+                                        <FontAwesomeIcon icon={faRotateLeft} className='bg-Blue cursor-pointer p-2 rounded-full text-lg text-white' onClick={() => handleArchive(Project._id)} />
                                     </div>
                                     
                                 </div>
