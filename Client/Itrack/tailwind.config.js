@@ -6,11 +6,14 @@ export default {
   ],
   theme: {
     extend: {
-      width: {
-        '120': '500px',
+      colors: {
+        Blue : '#0F4471'
       },
       fontSize: {
-        'custom': '21px', // Custom text size
+        'custom': '21px',
+      },
+      width: {
+        '120': '500px',
       },
     },
   },
