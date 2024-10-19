@@ -1,4 +1,5 @@
 import axios from "axios";
+import { format } from 'date-fns';
 import { useCookies } from "react-cookie";
 import { FaArchive } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
@@ -8,6 +9,10 @@ import { Paper, TableBody, TableContainer } from '@mui/material';
 import Project from "../../../Components/Common/Project/Project";
 import TableOutput from "../../../Components/Common/Table_Output/Table_Output";
 import TableHeading from "../../../Components/Common/Table_Head/Table_Heading";
+import Table_Body from "../../../Components/Common/Tablet_TableBody/Table_Body";
+import Table_Head from "../../../Components/Common/Mobile_TableHead/Table_Head";
+import Table_Results from "../../../Components/Common/Mobile_TableBody/Table_Results";
+import Table_Heading from "../../../Components/Common/Tablet_TableHead/Table_Heading";
 
 const Project_Information:React.FC = () => {
 
@@ -72,6 +77,13 @@ const Project_Information:React.FC = () => {
         }
     }
 
+    // DATE CONVERSION FROM MONGO DB FORMAT TO DATE FORMAT
+
+    const setDate = (date: any) => {
+        const dateObj = new Date(date);
+        return format(dateObj, 'dd-MM-yyyy');
+    }
+
 return (
     <div className="flex justify-between">
         {isLoading ? (
@@ -100,18 +112,18 @@ return (
                         })}</p>
                     }
                 />
-            </section>
-            <section className="hidden lg:block">
-                <TableContainer  component={Paper}>
+            </section> 
+            <section className="items-center justify-center hidden mb-5 xl:flex">
+                <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '1150px' }}> 
                     <TableHeading
                         EighthHeading = 'Action'
                         SecondHeading = 'Status'
                         FirstHeading = 'Priority'
                         FifthHeading = 'Ticket Type'
-                        ThirdHeading = 'Ticket Title'
+                        ThirdHeading = 'Ticket Name'
                         SixthHeading = 'Submitted By'
                         SeventhHeading = 'Created On'
-                        FourthHeading = 'Project Title'
+                        FourthHeading = 'Project Name'
                     />
                     <TableBody>
                     {
@@ -119,19 +131,67 @@ return (
                         Tickets.map((Ticket: any) => (
                             <TableOutput 
                                 ID={Ticket._id}
+                                Navigate={`/TicketDetails/${Ticket._id}`}
                                 FirstOutput={Ticket.Priority}
                                 SecondOutput={Ticket.Status}
-                                ThirdOutput={Ticket.Title}
-                                FourthOutput={Ticket.Projects}
+                                ThirdOutput={Ticket.Name}
+                                FourthOutput={Ticket.Project}
                                 FifthOutput={Ticket.Category}
                                 SixthOutput={Ticket.Submitted}
-                                SeventhOutput={Ticket.Date}
-                                children={<FaArchive id='Archive' size="1.8rem" className='cursor-pointer p-1 rounded' color="red" onClick={() => handleArchive(Ticket._id)} />}
+                                SeventhOutput={setDate(Ticket.Date)}  
+                                children={<FaArchive size="1.8rem" className='cursor-pointer p-1 rounded' color="red" onClick={() => handleArchive(Ticket._id)} />}
                             />
                         )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
                     }
                     </TableBody>
                 </TableContainer>
+            </section>
+            <section className="items-center justify-center hidden mb-5 sm:flex xl:hidden"> 
+                <TableContainer  component={Paper} sx={{ overflow: 'hidden', alignContent: 'center', justifyContent: 'center', width: '730px' }} >
+                    <Table_Heading
+                        SecondHeading = 'Ticket Name'
+                        FirstHeading = 'Priority'
+                        FifthHeading = 'Submitted By'
+                        ThirdHeading = 'Project Name'
+                        FourthHeading = 'Ticket Type'
+                    />
+                    <TableBody>
+                    {
+                        (Tickets.length > 0) ? 
+                        Tickets.map((Ticket: any) =>  ( 
+                            <Table_Body 
+                                ID={Ticket._id}
+                                Navigate={`/TicketDetails/${Ticket._id}`}
+                                FirstOutput={Ticket.Priority}
+                                SecondOutput={Ticket.Name}
+                                ThirdOutput={Ticket.Project}
+                                FourthOutput={Ticket.Category}
+                                FifthOutput={Ticket.Submitted}
+                            />
+                            )
+                        ) : (<h2 className='font-bold pt-5 text-center text-red-700 text-4xl'>No Tickets Found.</h2> )
+                    }
+                    </TableBody>
+                </TableContainer>
+            </section>
+            <section className="flex flex-col mb-5 sm:hidden">
+                <Table_Head
+                    FirstHeading="Ticket Name"
+                    SecondHeading="Project Name"
+                    ThirdHeading="Ticket Type"
+                />
+                {
+                    (Tickets.length > 0) ? 
+                    Tickets.map((Ticket: any) =>  (
+                        <Table_Results 
+                            ID={Ticket._id}
+                            FirstOutput={Ticket.Name}
+                            SecondOutput={Ticket.Project}
+                            ThirdOutput={Ticket.Category}
+                            Navigate={`/TicketDetails/${Ticket._id}`}
+                        />
+                    )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-2xl'>No Tickets Found.</h2> )
+                }
             </section>
         </div>
             )
