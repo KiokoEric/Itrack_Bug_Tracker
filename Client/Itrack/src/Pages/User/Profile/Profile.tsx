@@ -121,7 +121,7 @@ return (
                 Value={Password}
                 Children={showPassword ? <FontAwesomeIcon icon={faEye} className="underline" onClick={handleTogglePassword} /> : <FontAwesomeIcon icon={faEyeSlash} className="underline" onClick={handleTogglePassword} />  }
             />
-            <div className='flex gap-16 mt-5'>
+            <div className='flex gap-5 mt-5'>
                 {
                     Administrator ? <Button
                     onClick={EditUser}
