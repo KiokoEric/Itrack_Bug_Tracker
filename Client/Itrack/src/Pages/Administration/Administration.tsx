@@ -41,7 +41,7 @@ return (
             HeadingText="Administration"
         />
         <hr />
-        <section className="hidden xl:block">
+        <section className="hidden xl:flex xl:justify-center">
             <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , justifyItems: 'center' , overflow: 'hidden', width: '1150px' }}>
             <TableHead>
                 <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '1150px' , overflow: 'hidden' }}>
@@ -91,7 +91,7 @@ return (
             </TableBody>
             </TableContainer>
         </section>
-        <section className="flex flex-col sm:hidden">
+        <section className="flex flex-col items-center justify-center sm:hidden">
             <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', height: '40px', justifyContent: 'space-between', margin: 'auto', width: '345px' , overflow: 'hidden' }}>
                 <TableCell><Typography sx={{ fontWeight: 'bold', width: '130px' }}>Name</Typography></TableCell>
                 <TableCell><Typography sx={{ fontWeight: 'bold', width: '130px' }}>Position</Typography></TableCell>
