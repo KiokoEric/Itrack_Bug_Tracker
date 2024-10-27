@@ -43,7 +43,7 @@ return (
                 onClick={DeleteUser}
                 Children={<MdDelete size="1.4rem" />}
                 ButtonText='Delete Profile'
-                ButtonStyle='bg-black cursor-pointer flex items-center justify-center gap-2 mt-1 text-center text-white px-3 py-1.5 rounded w-40'
+                ButtonStyle='bg-red-800 cursor-pointer flex items-center justify-center gap-2 mt-1 text-center text-white px-3 py-1.5 rounded w-40 hover:bg-black'
             />
         </div>
     </div>
