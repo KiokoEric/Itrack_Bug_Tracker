@@ -219,7 +219,7 @@ return (
             </section>
         </div>
         {/* MOBILE MENU */}
-        <div className="flex items-center justify-between px-2 py-1 shadow-lg sticky text-black w-screen xl:hidden">
+        <div className="flex items-center justify-between px-2 py-1 shadow-lg sticky text-black w-screen z-50 xl:hidden">
             <Navigate
                 Navigation={"/Dashboard"}
                 NavigateStyle="font-bold text-4xl"
@@ -227,6 +227,7 @@ return (
             />
             <div className="flex items-center justify-center gap-3">
                 <Navigate
+                    ID='ProfileIcon'
                     children={<FontAwesomeIcon icon={faUser} className="bg-black text-white p-2 rounded-full text-base" />}
                     Navigation={`/${userID}`}
                 />
