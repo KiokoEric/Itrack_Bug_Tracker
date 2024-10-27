@@ -112,8 +112,8 @@ return (
                 </div>
                 <Button
                     ButtonText='Sign Up'
-                    ButtonStyle='bg-black cursor-pointer mt-1 text-center text-white px-3 py-1 rounded w-40'
-                    onClick={handleSubmit(onRegistration)}
+                    ButtonStyle='bg-red-800 cursor-pointer mt-1 text-center text-white px-3 py-1 rounded w-40 hover:bg-black'
+                    onClick={handleSubmit(onRegistration)} 
                 />
             </form>
         </div>
