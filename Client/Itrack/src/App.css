@@ -45,6 +45,28 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+#ProfileIcon {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#ProfileIcon:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "My Profile";
+  font-family: 'Instrument Serif', serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  top: 40.5px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 80px;
+  z-index: 1;
+}
 #Edit {
   cursor: pointer;
   display: inline-block;
