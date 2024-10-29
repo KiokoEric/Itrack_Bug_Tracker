@@ -129,7 +129,7 @@ return (
         </section>
             <h2 className="font-bold text-center text-4xl underline sm:text-left">Projects</h2>
         <section className="max">
-            <div className="grid grid-cols-1 gap-8 items-center justify-center mt-2 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 items-center justify-center h-72 mt-2 overflow-y-scroll sm:grid-cols-3">
                 {
                 (Projects.length > 0) ?  
                 Projects.map((Project: any) => { 

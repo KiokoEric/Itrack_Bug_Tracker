@@ -57,7 +57,7 @@ const Create_Project: React.FC = () => {
         await axios.post("http://localhost:4000/Projects/AddProject", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
-        setSuccess('Project has been successfully added.') 
+        setSuccess('Project has been successfully created.') 
     };
 
     // FETCHING ITRACK USERS
