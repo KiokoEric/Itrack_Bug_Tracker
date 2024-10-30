@@ -1,9 +1,14 @@
 import axios from "axios";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 import { FaUser } from "react-icons/fa";
 import { useCookies } from "react-cookie";
 import { RiFolder6Fill } from "react-icons/ri";
 import { IoIosPricetags } from "react-icons/io";
 import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper/modules';
 import Output from "../../Components/Common/Output/Output";
 import Heading from "../../Components/Common/Heading/Heading";
 import TypeLabels from "../../Components/Charts/Ticket_Type/Type_Lables";
@@ -12,6 +17,7 @@ import TicketStatus from "../../Components/Charts/Ticket_Status/Ticket_Status";
 import StatusLabels from "../../Components/Charts/Ticket_Status/Status_Labels";
 import PriorityLabels from "../../Components/Charts/Ticket_Priority/Priority_Labels";
 import TicketPriority from "../../Components/Charts/Ticket_Priority/Ticket_Priority";
+
 
 const Dashboard:React.FC = () => {
 
@@ -127,23 +133,31 @@ return (
                 HeadingValue={Users}
             />
         </section>
-            <h2 className="font-bold text-center text-4xl underline sm:text-left">Projects</h2>
-        <section className="max">
-            <div className="grid grid-cols-1 gap-8 items-center justify-center h-72 mt-2 overflow-y-scroll sm:grid-cols-3">
-                {
-                (Projects.length > 0) ?  
-                Projects.map((Project: any) => { 
-                    return (
+        <h2 className="font-bold text-center text-4xl underline sm:text-left">Projects</h2>
+        <section>
+            <Swiper
+                slidesPerView={3}
+                spaceBetween={30}
+                freeMode={true}
+                pagination={{
+                clickable: true,
+                }}
+                modules={[FreeMode, Pagination]}
+                className="mySwiper"
+            >
+                {(Projects.length > 0) ?  
+                Projects.map((Project: any) => (
+                    <SwiperSlide>
                         <Output
                             ID={Project._id}
                             Navigate = {`/ProjectDetails/${Project._id}`}
                             Image = {Project.Image}
                             Name = {Project.Name} 
                         />
-                    )
-                }) : <h2 className='font-bold m-auto text-center text-red-600 text-3xl w-screen'>No Projects Found.</h2> 
-                }
-            </div>
+                    </SwiperSlide>
+                )) : <h2 className='font-bold m-auto text-center text-red-600 text-3xl w-screen'>No Projects Found.</h2> 
+            }
+            </Swiper>
         </section>
         <section>
             <h2 className="font-bold mb-5 text-center text-4xl underline sm:text-left">Tickets</h2>
