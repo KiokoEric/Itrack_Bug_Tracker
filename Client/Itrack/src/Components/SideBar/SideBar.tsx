@@ -75,7 +75,7 @@ const SideBar: React.FC = () => {
 
 return (
     <div>
-        <div id="SideBar" className="hidden bg-red-700 flex-col justify-between min-h-full min-w-max mt-0.5 py-5 rounded text-white xl:flex">
+        <div id="SideBar" className="hidden bg-red-700 flex-col justify-between min-h-screen min-w-max mt-0.5 py-5 rounded text-white xl:flex">
             <section className="flex flex-col gap-3 px-5">
                 <div>
                     <figure className="flex font-bold justify-center gap-1.5">
