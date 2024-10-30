@@ -97,7 +97,7 @@ const Dashboard:React.FC = () => {
     },[])
 
 return (
-    <div className="flex flex-col gap-5 mb-5 mx-auto w-11/12">
+    <div id="Dashboard" className="flex flex-col gap-5 h-screen mb-5 mx-auto overflow-y-scroll w-11/12">
         <section className="grid grid-cols-1 gap-5 mx-auto w-11/12 md:justify-between md:grid-cols-3">
             <Heading
                 BodyStyle="bg-red-700 pt-1 rounded"
