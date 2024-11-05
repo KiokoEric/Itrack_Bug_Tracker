@@ -61,9 +61,9 @@ const Ticket_Archives:React.FC = () => {
             axios.post(`http://localhost:4000/TicketArchives/moveTicket/${id}`,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
-            .then(
+            .then(() => {
                 window.location.reload()
-            )
+            })
         } catch (error) { 
             console.error(error)  
         }
