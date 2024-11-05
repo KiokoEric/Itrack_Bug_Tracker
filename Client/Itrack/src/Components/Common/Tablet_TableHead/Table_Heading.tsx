@@ -5,12 +5,11 @@ interface TableHeadProps {
     FirstHeading: string;
     ThirdHeading: string;
     FifthHeading?: string;
-    SixthHeading?: string;
     SecondHeading: string;
     FourthHeading: string;
 }
 
-const Table_Heading: React.FC<TableHeadProps> = ({ FirstHeading, SecondHeading, ThirdHeading, FourthHeading, FifthHeading, SixthHeading}) => {
+const Table_Heading: React.FC<TableHeadProps> = ({ FirstHeading, SecondHeading, ThirdHeading, FourthHeading, FifthHeading}) => {
 return (
     <TableHead>
         <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '725px' , overflow: 'hidden' }}>
