@@ -20,6 +20,7 @@ const Edit_Ticket:React.FC = () => {
 
     const [Users, setUsers] = useState<[]>([])
     const [Name, setName] = useState<string>("")
+    const [userOwner, __] = useState<any>(UserID)
     const [Status, setStatus] = useState<string>("")
     const [Projects,  setProjects] = useState<[]>([])
     const [Success, setSuccess] = useState<string>("")
@@ -27,7 +28,6 @@ const Edit_Ticket:React.FC = () => {
     const [Priority, setPriority] = useState<string>("")
     const [Category, setCategory] = useState<string>("")
     const [Submitted, setSubmitted] = useState<string>("")
-    const [userOwner, setuserOwner] = useState<any>(UserID)
     const [Description, setDescription] = useState<string>("")
 
     // RECEIVING CREATED TICKET DETAILS
