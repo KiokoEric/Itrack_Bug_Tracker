@@ -9,12 +9,11 @@ interface TableBodyProps {
     TableStyle?: string;
     ThirdOutput: string;
     FifthOutput?: string;
-    SixthOutput?: string;
     SecondOutput: string;
     FourthOutput: string;
 }
 
-const Table_Body:React.FC<TableBodyProps> = ({ ID, Navigate, FirstOutput, SecondOutput, ThirdOutput, FourthOutput, FifthOutput, SixthOutput }) => {
+const Table_Body:React.FC<TableBodyProps> = ({ ID, Navigate, FirstOutput, SecondOutput, ThirdOutput, FourthOutput, FifthOutput }) => {
 return (
     <TableRow key={ID} sx={{ borderBottom: '1px solid black', display: 'flex', alignContent: 'center',  justifyContent: 'space-between', height: '45px' ,margin: 'auto', width: '725px' , overflow: 'hidden' }}>
         <TableCell><Typography sx={{ fontSize: 17, width: '100px'  }}><Link to={Navigate} className='text-black no-underline'>{FirstOutput}</Link></Typography></TableCell>
