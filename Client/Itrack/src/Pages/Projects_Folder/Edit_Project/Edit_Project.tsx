@@ -20,6 +20,7 @@ const Edit_Project:React.FC = () => {
 
     const [ Users, setUsers ] = useState<[]>([])
     const [ Name, setName ] = useState<string>('')
+    const [ userOwner, __ ] = useState<any>(UserID)
     const [ Image, setImage ] = useState<string>('')
     const [ Success, setSuccess ] = useState<string>('')
     const [ Manager, setManager ] = useState<string>('')
@@ -27,7 +28,6 @@ const Edit_Project:React.FC = () => {
     const [ Priority, setPriority ] = useState<string>('')
     const [ Assigned, setAssigned ] = useState<string>('')
     const [ StartDate, setStartDate ] = useState<string>('')
-    const [ userOwner, setuserOwner ] = useState<any>(UserID)
     const [ Description, setDescription ] = useState<string>('')
     const [ ShowAssigned, setShowAssigned ] = useState<boolean>(false);
 
