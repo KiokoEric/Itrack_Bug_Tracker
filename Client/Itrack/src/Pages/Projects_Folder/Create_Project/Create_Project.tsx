@@ -12,10 +12,10 @@ import { useGetUserID } from '../../../Components/Hooks/useGetUserID';
 interface FormValues {
     Name: string;
     Image: string;
-    EndDate: Date;
-    StartDate: Date;
+    EndDate: string;
     Manager: string;
     Priority: string;
+    StartDate: string;
     Assigned: string[];
     Description: string;
 };
