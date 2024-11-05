@@ -23,6 +23,7 @@ const Ticket_Details:React.FC = () => {
     // USESTATE HOOK
 
     const [Users, setUsers] = useState<[]>([])
+    const [userOwner, __] = useState<any>(UserID)
     const [Tickets, setTickets] = useState<any>([])
     const [Assigned, setAssigned] = useState<[]>([])
     const [Comments, setComments] = useState<[]>([])
@@ -31,7 +32,6 @@ const Ticket_Details:React.FC = () => {
     const [Comment, setComment] = useState<string>("")
     const [TicketID, setTicketID] = useState<string>("")
     const [Submitted, setSubmitted] = useState<string>("")
-    const [userOwner, setuserOwner] = useState<any>(UserID)
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [ProjectName, setProjectName] = useState<string>("")
     const [CommentError, setCommentError] = useState<string>("")
