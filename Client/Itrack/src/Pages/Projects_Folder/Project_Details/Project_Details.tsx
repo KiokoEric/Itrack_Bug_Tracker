@@ -30,7 +30,7 @@ const Project_Details:React.FC = () => {
     // FETCHING PROJECT DETAILS BY PROJECT ID
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/Projects/${id}`, {
+        axios.get(`https://itrack-server-9s7w.onrender.com/Projects/${id}`, {
         headers: { authorization: Cookie.auth_token }
         }) 
         .then((Response) => {
@@ -47,7 +47,7 @@ const Project_Details:React.FC = () => {
 
     useEffect(() => {
         const FetchTickets = () => { 
-            axios.get(`http://localhost:4000/Ticket/Projects/${ProjectName}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/Projects/${ProjectName}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -63,7 +63,7 @@ const Project_Details:React.FC = () => {
 
     const handleArchive = (ID: any) => {
         try {
-            axios.post(`http://localhost:4000/TicketArchives/moveTicket/${ID}`,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/TicketArchives/moveTicket/${ID}`,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

@@ -54,7 +54,7 @@ const Create_Project: React.FC = () => {
     // ADD PROJECT FUNCTION
 
     const AddProject: SubmitHandler<FormValues> = async (data: FormData) => {
-        await axios.post("http://localhost:4000/Projects/AddProject", data, {
+        await axios.post("https://itrack-server-9s7w.onrender.com/Projects/AddProject", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         setSuccess('Project has been successfully created.') 
@@ -65,7 +65,7 @@ const Create_Project: React.FC = () => {
     useEffect(() => {
 
         const FetchUsers = () => {
-            axios.get(`http://localhost:4000/Users/`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

@@ -23,7 +23,7 @@ const TicketType:React.FC = () => {
     useEffect(() => {
 
         const FetchDefect = () => {
-            axios.get(`http://localhost:4000/Ticket/CategoryLength/Defect`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/CategoryLength/Defect`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -32,7 +32,7 @@ const TicketType:React.FC = () => {
         } 
 
         const FetchDocumentation = () => {
-            axios.get(`http://localhost:4000/Ticket/CategoryLength/Documentation`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/CategoryLength/Documentation`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -41,7 +41,7 @@ const TicketType:React.FC = () => {
         } 
 
         const FetchEnhancement = () => {
-            axios.get(`http://localhost:4000/Ticket/CategoryLength/Enhancement`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/CategoryLength/Enhancement`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -50,7 +50,7 @@ const TicketType:React.FC = () => {
         } 
 
         const FetchFeature = () => {
-            axios.get(`http://localhost:4000/Ticket/CategoryLength/Feature_Request`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/CategoryLength/Feature_Request`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -59,7 +59,7 @@ const TicketType:React.FC = () => {
         } 
 
         const FetchHardware = () => {
-            axios.get(`http://localhost:4000/Ticket/CategoryLength/Hardware_Problem`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/CategoryLength/Hardware_Problem`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

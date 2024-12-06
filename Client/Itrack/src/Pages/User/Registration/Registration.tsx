@@ -37,7 +37,7 @@ const Registration:React.FC = () => {
 
     const onRegistration : SubmitHandler<FormValues> = async (data) => {
         try {
-            await axios.post("http://localhost:4000/Users/Registration", data) 
+            await axios.post("https://itrack-server-9s7w.onrender.com/Users/Registration", data) 
                 enqueueSnackbar("Registration Completed! Kindly Log in", { 
                     variant: 'success',
                     anchorOrigin: {

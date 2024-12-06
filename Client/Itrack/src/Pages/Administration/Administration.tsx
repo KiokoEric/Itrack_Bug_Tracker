@@ -20,7 +20,7 @@ const Administration:React.FC = () => {
     useEffect(() => {
 
         const FetchUsers = () => { 
-            axios.get(`http://localhost:4000/Users/`, { 
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, { 
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

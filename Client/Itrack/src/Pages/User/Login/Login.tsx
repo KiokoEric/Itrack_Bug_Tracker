@@ -34,7 +34,7 @@ const Login: React.FC  = () => {
 
     const onLogin : SubmitHandler<FormValues> = async (data) => {
         try {
-            const response = await axios.post("http://localhost:4000/Users/Login", data)
+            const response = await axios.post("https://itrack-server-9s7w.onrender.com/Users/Login", data)
                 setCookie("auth_token", response.data.Token)
                 window.localStorage.setItem("UserID", response.data.UserID)
                 enqueueSnackbar("Logged in successfully!" , { 
@@ -67,7 +67,7 @@ const Login: React.FC  = () => {
             Email : "kiokoerick040@gmail.com" , Password : "Victory2024"
         }
         try {
-                const response = await axios.post("http://localhost:4000/Users/Login", data)
+                const response = await axios.post("https://itrack-server-9s7w.onrender.com/Users/Login", data)
                 setCookie("auth_token", response.data.Token)
                 window.localStorage.setItem("UserID", response.data.UserID)
                 enqueueSnackbar("Logged in successfully!" , { 
@@ -98,7 +98,7 @@ const Login: React.FC  = () => {
             Email : "faithkanini@gmail.com" , Password : "Triumph2024"
         }
         try {
-            const response = await axios.post("http://localhost:4000/Users/Administrator", data)
+            const response = await axios.post("https://itrack-server-9s7w.onrender.com/Users/Administrator", data)
                 setCookie("auth_token", response.data.Token)
                 window.localStorage.setItem("Administrator", "Administration")
                 enqueueSnackbar("Logged in successfully!" , { 

@@ -30,7 +30,7 @@ const My_Tickets:React.FC = () => {
     useEffect(() => {
 
     const FetchTickets = () => {
-        axios.get(`http://localhost:4000/Ticket/${UserID}/Tickets`, {
+        axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/${UserID}/Tickets`, {
         headers: { authorization: Cookie.auth_token },
         }) 
         .then((Response) => {
@@ -50,7 +50,7 @@ const My_Tickets:React.FC = () => {
 
     const handleArchive= (ID: any) => {
         try {
-            axios.post(`http://localhost:4000/Ticket/moveTicket/${ID}`, ID ,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/Ticket/moveTicket/${ID}`, ID ,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

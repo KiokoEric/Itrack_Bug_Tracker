@@ -27,7 +27,7 @@ const Ticket_Information:React.FC = () => {
     useEffect(() => {
 
         const FetchTickets = () => {
-            axios.get(`http://localhost:4000/TicketArchives/${id}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/TicketArchives/${id}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -48,7 +48,7 @@ const Ticket_Information:React.FC = () => {
     useEffect(() => {
 
         const FetchComments = () => {
-            axios.get(`http://localhost:4000/Comments/Comment/${TicketID}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Comments/Comment/${TicketID}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

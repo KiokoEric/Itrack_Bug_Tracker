@@ -24,7 +24,7 @@ const Projects_Archives: React.FC = () => {
     useEffect(() => {
 
         const fetchProjects = async () => {
-            await axios.get(`http://localhost:4000/ProjectArchives/Archives`, {
+            await axios.get(`https://itrack-server-9s7w.onrender.com/ProjectArchives/Archives`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 
@@ -43,7 +43,7 @@ const Projects_Archives: React.FC = () => {
     // DELETE ARCHIVED PROJECT BY PROJECT ID
 
     const handleDelete= (id: any) => {
-        axios.delete(`http://localhost:4000/ProjectArchives/${id}`, {
+        axios.delete(`https://itrack-server-9s7w.onrender.com/ProjectArchives/${id}`, {
             headers: { authorization: Cookie.auth_token }
         })
         .then(() => { 
@@ -55,7 +55,7 @@ const Projects_Archives: React.FC = () => {
 
     const handleArchive = (ID: any) => {
         try {
-            axios.post(`http://localhost:4000/ProjectArchives/moveProject/${ID}`,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/ProjectArchives/moveProject/${ID}`,  {
                 headers: { authorization: Cookie.auth_token }
             }) 
             .then(() => {

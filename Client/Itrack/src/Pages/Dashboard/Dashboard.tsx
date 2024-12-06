@@ -35,7 +35,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const fetchProjects = async () => {
-            await axios.get(`http://localhost:4000/Projects/Projects`, {
+            await axios.get(`https://itrack-server-9s7w.onrender.com/Projects/Projects`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 
@@ -53,7 +53,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const ProjectNumber = async () => {
-            await  axios.get(`http://localhost:4000/Projects/ProjectsTotal`, {
+            await  axios.get(`https://itrack-server-9s7w.onrender.com/Projects/ProjectsTotal`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 
@@ -71,7 +71,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const TicketNumber = async () => {
-            await  axios.get(`http://localhost:4000/Ticket/TicketsTotal`, {
+            await  axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/TicketsTotal`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 
@@ -89,7 +89,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const UserNumber = async () => {
-            await  axios.get(`http://localhost:4000/Users/UsersLength`, {
+            await  axios.get(`https://itrack-server-9s7w.onrender.com/Users/UsersLength`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 

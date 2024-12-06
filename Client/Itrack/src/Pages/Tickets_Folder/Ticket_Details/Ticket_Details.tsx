@@ -41,7 +41,7 @@ const Ticket_Details:React.FC = () => {
     useEffect(() => {
 
         const FetchTickets = () => {
-            axios.get(`http://localhost:4000/Ticket/${id}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/${id}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -63,7 +63,7 @@ const Ticket_Details:React.FC = () => {
     useEffect(() => {
     
         const FetchProject = () => {
-            axios.get(`http://localhost:4000/Projects/Name/${ProjectName}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Projects/Name/${ProjectName}`, {
             headers: { authorization: Cookie.auth_token }
             }) 
             .then((Response) => {
@@ -81,7 +81,7 @@ const Ticket_Details:React.FC = () => {
     useEffect(() => {
     
         const FetchComments = () => {
-            axios.get(`http://localhost:4000/Comments/Comment/${TicketID}`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Comments/Comment/${TicketID}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -97,7 +97,7 @@ const Ticket_Details:React.FC = () => {
 
     const handleArchive= (ID: any) => {
         try {
-            axios.post(`http://localhost:4000/Ticket/moveTicket/${ID}`, ID ,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/Ticket/moveTicket/${ID}`, ID ,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 
@@ -113,7 +113,7 @@ const Ticket_Details:React.FC = () => {
     useEffect(() => {
     
         const FetchUsers = () => {
-            axios.get(`http://localhost:4000/Users/`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -137,7 +137,7 @@ const Ticket_Details:React.FC = () => {
                 Comment, TicketID, Submitted, userOwner
             }
             try {
-                axios.post("http://localhost:4000/Comments/AddComment", data , {
+                axios.post("https://itrack-server-9s7w.onrender.com/Comments/AddComment", data , {
                     headers: { authorization: Cookie.auth_token },
                 }) 
                 .then(() => { 

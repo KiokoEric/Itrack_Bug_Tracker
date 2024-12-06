@@ -52,7 +52,7 @@ const Create_Ticket: React.FC = () => {
     // ADD TICKET FUNCTION
 
     const AddTicket: SubmitHandler<FormValues> = async (data: FormData) => {
-        await axios.post("http://localhost:4000/Ticket/AddTicket", data, {
+        await axios.post("https://itrack-server-9s7w.onrender.com/Ticket/AddTicket", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         setSuccess('Ticket has been successfully created.') 
@@ -63,7 +63,7 @@ const Create_Ticket: React.FC = () => {
     useEffect(() => {
 
         const FetchUsers = () => {
-            axios.get(`http://localhost:4000/Users/`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -80,7 +80,7 @@ const Create_Ticket: React.FC = () => {
     useEffect(() => {
 
         const FetchProject = () => {
-            axios.get(`http://localhost:4000/Projects/Projects`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Projects/Projects`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

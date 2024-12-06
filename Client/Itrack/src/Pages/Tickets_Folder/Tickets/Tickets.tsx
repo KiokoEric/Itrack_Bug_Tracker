@@ -32,7 +32,7 @@ const Tickets:React.FC = () => {
         // FETCHING TOTAL NUMBER OF HIGH PRIORITY TICKETS CREATED BY ITRACK USERS
 
         const FetchHighPriority = () => {
-            axios.get(`http://localhost:4000/Ticket/PriorityLength/High`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/PriorityLength/High`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -43,7 +43,7 @@ const Tickets:React.FC = () => {
         // FETCHING TOTAL NUMBER OF CRITICAL PRIORITY TICKETS CREATED BY ITRACK USERS
 
         const FetchCriticalPriority = () => {
-            axios.get(`http://localhost:4000/Ticket/PriorityLength/Critical`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/PriorityLength/Critical`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -54,7 +54,7 @@ const Tickets:React.FC = () => {
         // FETCHING TOTAL NUMBER OF OPEN STATUS TICKETS CREATED BY ITRACK USERS
 
         const FetchOpen = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/Open`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/Open`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -65,7 +65,7 @@ const Tickets:React.FC = () => {
         // FETCHING TOTAL NUMBER OF IN PROGRESS PRIORITY TICKETS CREATED BY ITRACK USERS
 
         const FetchProgressStatus = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/In_Progress`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/In_Progress`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -88,7 +88,7 @@ const Tickets:React.FC = () => {
     // FETCHING ALL THE TICKETS CREATED BY ITRACK USERS
 
     const FetchTickets = () => {
-        axios.get(`http://localhost:4000/Ticket/Tickets`, {
+        axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/Tickets`, {
         headers: { authorization: Cookie.auth_token },
         }) 
         .then((Response) => {
@@ -107,7 +107,7 @@ const Tickets:React.FC = () => {
 
     const handleArchive= (ID: any) => {
         try {
-            axios.post(`http://localhost:4000/Ticket/moveTicket/${ID}`, ID ,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/Ticket/moveTicket/${ID}`, ID ,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

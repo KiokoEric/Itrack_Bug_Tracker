@@ -22,7 +22,7 @@ const TicketStatus:React.FC = () => {
     useEffect(() => {
 
         const FetchOpen = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/Open`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/Open`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -31,7 +31,7 @@ const TicketStatus:React.FC = () => {
         } 
 
         const FetchProgressStatus = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/In_Progress`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/In_Progress`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -40,7 +40,7 @@ const TicketStatus:React.FC = () => {
         } 
 
         const FetchResolvedStatus = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/Resolved`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/Resolved`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -49,7 +49,7 @@ const TicketStatus:React.FC = () => {
         } 
 
         const FetchDoneStatus = () => {
-            axios.get(`http://localhost:4000/Ticket/StatusLength/Done`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/StatusLength/Done`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

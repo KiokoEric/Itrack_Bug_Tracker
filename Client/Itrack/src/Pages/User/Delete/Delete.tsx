@@ -15,7 +15,7 @@ const Delete:React.FC = () => {
 
     const DeleteUser = () => {
         try{
-            axios.delete(`http://localhost:4000/Users/Delete/${id}`, {
+            axios.delete(`https://itrack-server-9s7w.onrender.com/Users/Delete/${id}`, {
                 headers: { authorization: Cookie.auth_token }
             })
             .then(() => { 

@@ -28,7 +28,7 @@ const Ticket_Archives:React.FC = () => {
     useEffect(() => {
 
         try{
-            axios.get(`http://localhost:4000/TicketArchives/Archives`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/TicketArchives/Archives`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -46,7 +46,7 @@ const Ticket_Archives:React.FC = () => {
     // DELETING THE TICKET BASED ON THE TICKET ID
 
     const handleDelete= (_id: any) => {
-        axios.delete(`http://localhost:4000/TicketArchives/${_id}`, {
+        axios.delete(`https://itrack-server-9s7w.onrender.com/TicketArchives/${_id}`, {
             headers: { authorization: Cookie.auth_token }
         })
         .then(() => { 
@@ -58,7 +58,7 @@ const Ticket_Archives:React.FC = () => {
 
     const handleArchive = (id: any) => {
         try {
-            axios.post(`http://localhost:4000/TicketArchives/moveTicket/${id}`,  {
+            axios.post(`https://itrack-server-9s7w.onrender.com/TicketArchives/moveTicket/${id}`,  {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => {

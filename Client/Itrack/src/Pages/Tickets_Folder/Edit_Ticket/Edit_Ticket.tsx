@@ -33,7 +33,7 @@ const Edit_Ticket:React.FC = () => {
     // RECEIVING CREATED TICKET DETAILS
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/Ticket/${id}`, {
+        axios.get(`https://itrack-server-9s7w.onrender.com/Ticket/${id}`, {
                 headers: { authorization: Cookie.auth_token },
             }) 
         .then((Data) => { 
@@ -56,7 +56,7 @@ const Edit_Ticket:React.FC = () => {
             Name, Project, Description, Category, Priority, Status, Submitted, userOwner
         }
         try {
-            axios.put(`http://localhost:4000/Ticket/${id}`, data , {
+            axios.put(`https://itrack-server-9s7w.onrender.com/Ticket/${id}`, data , {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 
@@ -72,7 +72,7 @@ const Edit_Ticket:React.FC = () => {
     useEffect(() => {
 
         const FetchUsers = () => {
-            axios.get(`http://localhost:4000/Users/`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -89,7 +89,7 @@ const Edit_Ticket:React.FC = () => {
     useEffect(() => {
 
         const FetchProject = () => {
-            axios.get(`http://localhost:4000/Projects/Projects`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Projects/Projects`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

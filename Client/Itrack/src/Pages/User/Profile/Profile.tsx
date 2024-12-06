@@ -41,7 +41,7 @@ const Profile:React.FC = () => {
 
         const FetchUser =() => {
             try{
-                axios.get(`http://localhost:4000/Users/${id}`, {
+                axios.get(`https://itrack-server-9s7w.onrender.com/Users/${id}`, {
                 headers: { authorization: Cookie.auth_token },
                 }) 
                 .then((Data) => {

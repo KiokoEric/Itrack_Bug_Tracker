@@ -25,7 +25,7 @@ const Projects: React.FC = () => {
     useEffect(() => {
 
         const fetchProjects = async () => {
-            await axios.get(`http://localhost:4000/Projects/Projects`, {
+            await axios.get(`https://itrack-server-9s7w.onrender.com/Projects/Projects`, {
             headers: { authorization: Cookie.auth_token },
             
             }) 
@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
     // DELETE PROJECT FROM ITRACK
     
     const handleDelete= (id: any) => {
-        axios.delete(`http://localhost:4000/Projects/${id}`, {
+        axios.delete(`https://itrack-server-9s7w.onrender.com/Projects/${id}`, {
             headers: { authorization: Cookie.auth_token }
         })
         .then(() => { 
@@ -57,7 +57,7 @@ const Projects: React.FC = () => {
     const handleArchive= (ID: any) => {
     
         try {
-            axios.post(`http://localhost:4000/Projects/moveProject/${ID}`, {
+            axios.post(`https://itrack-server-9s7w.onrender.com/Projects/moveProject/${ID}`, {
                 headers: { authorization: Cookie.auth_token }, 
             }) 
             .then(() => { 

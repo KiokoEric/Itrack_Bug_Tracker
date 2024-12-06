@@ -34,7 +34,7 @@ const Edit_Project:React.FC = () => {
     // RECEIVING CREATED PROJECT DETAILS
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/Projects/${id}`, {
+        axios.get(`https://itrack-server-9s7w.onrender.com/Projects/${id}`, {
                 headers: { authorization: Cookie.auth_token },
             }) 
         .then((Data) => { 
@@ -57,7 +57,7 @@ const Edit_Project:React.FC = () => {
         const data = {
             Name, Description, StartDate, EndDate, Assigned, Manager, Priority, Image, userOwner
         }
-        axios.put(`http://localhost:4000/Projects/${id}`, data , {
+        axios.put(`https://itrack-server-9s7w.onrender.com/Projects/${id}`, data , {
             headers: { authorization: Cookie.auth_token },
         }) 
         .then(() => {
@@ -70,7 +70,7 @@ const Edit_Project:React.FC = () => {
     useEffect(() => {
 
         const FetchUsers = () => {
-            axios.get(`http://localhost:4000/Users/`, {
+            axios.get(`https://itrack-server-9s7w.onrender.com/Users/`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
