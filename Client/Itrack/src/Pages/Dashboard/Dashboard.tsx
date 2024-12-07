@@ -134,7 +134,24 @@ return (
             />
         </section>
         <h2 className="font-bold text-center text-4xl underline sm:text-left">Projects</h2>
-        <section>
+        <section className="block sm:hidden">
+            <div className="grid grid-cols-1 gap-8 items-center justify-center mt-2">
+                {
+                (Projects.length > 0) ?  
+                Projects.map((Project: any) => { 
+                    return (
+                        <Output
+                            ID={Project._id}
+                            Navigate = {`/ProjectDetails/${Project._id}`}
+                            Image = {Project.Image}
+                            Name = {Project.Name} 
+                        />
+                    )
+                }) : <h2 className='font-bold m-auto text-center text-red-600 text-3xl w-screen'>No Projects Found.</h2> 
+                }
+            </div>
+        </section>
+        <section className="hidden sm:block" >
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
