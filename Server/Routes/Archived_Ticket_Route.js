@@ -2,9 +2,9 @@ const dotenv = require('dotenv');
 const express = require('express');
 const jwt = require("jsonwebtoken");
 const ArchiveRoute = express.Router();
-const Ticket = require("../Models/Tickets");
+const Ticket = require("../Models/Tickets.js");
 const cookieParser = require("cookie-parser"); 
-const Archive = require("../Models/Archived_Tickets");
+const Archive = require("../Models/Archived_Tickets.js");
 
 const myPassword = process.env.Password
 

@@ -1,10 +1,10 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const jwt = require("jsonwebtoken");
-const Project = require("../Models/Projects");
+const Project = require("../Models/Projects.js");
 const ArchivedProjectRoute = express.Router();
 const cookieParser = require("cookie-parser"); 
-const Archive = require("../Models/Archived_Projects");
+const Archive = require("../Models/Archived_Projects.js");
 
 const myPassword = process.env.Password
 

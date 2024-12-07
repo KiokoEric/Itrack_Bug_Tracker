@@ -3,8 +3,8 @@ const express = require('express');
 const jwt = require("jsonwebtoken");
 const ProjectRoute = express.Router();
 const cookieParser = require("cookie-parser"); 
-const Project = require("../Models/Projects");
-const Archive = require("../Models//Archived_Projects");
+const Project = require("../Models/Projects.js");
+const Archive = require("../Models//Archived_Projects.js");
 
 const myPassword = process.env.Password
 

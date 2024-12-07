@@ -27,12 +27,12 @@ mongoose.connect(dbUrl)
 
     // IMPORT ROUTES
 
-    const UserRoute = require("./Routes/User_Route");
-    const TicketRoute = require("./Routes/Ticket_Route"); 
-    const ProjectRoute = require("./Routes/Project_Route");
-    const CommentRoute = require("./Routes/Comment_Route");  
-    const ArchivedTicketRoute = require("./Routes/Archived_Ticket_Route");
-    const ArchivedProjectRoute = require("./Routes/Archived_Projects_Route"); 
+    const UserRoute = require("./Routes/User_Route.js");
+    const TicketRoute = require("./Routes/Ticket_Route.js"); 
+    const ProjectRoute = require("./Routes/Project_Route.js");
+    const CommentRoute = require("./Routes/Comment_Route.js");  
+    const ArchivedTicketRoute = require("./Routes/Archived_Ticket_Route.js");
+    const ArchivedProjectRoute = require("./Routes/Archived_Projects_Route.js"); 
     
     app.use("/Users", UserRoute);
     app.use("/Ticket", TicketRoute); 
