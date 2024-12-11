@@ -17,7 +17,7 @@ return (
                 <Link to={Navigate} className='text-black no-underline' >  
                     {Image ? (<img src={Image} alt="" className='rounded' width='320px' />) : (<img src={ProjectImage} alt="" width='320px' />) }
                     <figcaption>
-                        <h2 className="font-bold mt-5 text-center text-3xl">{Name}</h2>
+                        <h2 className="font-bold mt-5 text-center text-2xl">{Name}</h2>
                     </figcaption>
                 </Link>
                 {children}
