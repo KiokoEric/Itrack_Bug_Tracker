@@ -141,7 +141,7 @@ return (
                 />
                 <hr />
                 <br />
-                <section className="grid grid-cols-1 gap-5 mx-auto lg:justify-between lg:grid-cols-4">
+                <section className="grid grid-cols-1 gap-5 items-center mx-auto md:justify-between md:grid-cols-2 lg:grid-cols-4">
                     <Heading
                         BodyStyle="bg-blue-900 pt-1 rounded"
                         ContainerStyle="flex gap-2 items-center justify-center"
