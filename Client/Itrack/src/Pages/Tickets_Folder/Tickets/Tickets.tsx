@@ -126,7 +126,7 @@ const Tickets:React.FC = () => {
     }
 
 return (
-    <div className='flex flex-col gap-5 px-2 text-black w-full sm:px-5'>
+    <div className='flex flex-col gap-5 mb-5 px-2 text-black w-full sm:px-5'>
         {isLoading ? (
             <div className="flex items-center justify-center" >
                 <img src={Loading} alt="Loading..." className='m-auto w-1/2' />
