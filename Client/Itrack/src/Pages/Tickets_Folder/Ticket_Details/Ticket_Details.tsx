@@ -195,7 +195,7 @@ return (
                     <div className='flex flex-col sm:flex-row sm:justify-between sm:-mb-1'>
                         <h2 className='font-bold pb-2 text-3xl'>{Tickets.Name}</h2>
                         <div className='flex justify-between sm:items-center sm:justify-center gap-5'>
-                            <b>Ticket Date: {setDate(Tickets.Date)}</b>
+{/*                             <b>Ticket Date: {setDate(Tickets.Date)}</b> */}
                             <div id='ArchiveTicket'>
                                 <FaArchive size="1.8rem" className='cursor-pointer p-1 rounded' color="red" onClick={() => handleArchive(Tickets._id)} />
                             </div>
