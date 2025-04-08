@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { FaUserTie } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import React, { useEffect, useState } from 'react';
-import Loading from "../../../assets/Loading_Image.gif";
+import Loading from "../../assets/Loading_Image.gif";
 import Heading from "../../Components/Common/Heading/Heading";
 import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
