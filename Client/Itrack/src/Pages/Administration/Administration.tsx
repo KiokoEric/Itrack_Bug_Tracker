@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { FaUserTie } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import React, { useEffect, useState } from 'react';
+import Loading from "../../../assets/Loading_Image.gif";
 import Heading from "../../Components/Common/Heading/Heading";
 import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
@@ -14,6 +15,7 @@ const Administration:React.FC = () => {
     // USESTATE HOOK
 
     const [Users, setUsers] = useState<[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     // FETCHING ITRACK USERS
 
@@ -26,6 +28,9 @@ const Administration:React.FC = () => {
             .then((Response) => {
                 setUsers(Response.data)
             })
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 1500);
         } 
     
         FetchUsers()
@@ -34,6 +39,11 @@ const Administration:React.FC = () => {
 
 return (
     <div className='flex flex-col gap-5 mb-5 px-2 text-black w-full sm:px-5'>
+        {isLoading ? (
+            <div className="flex items-center justify-center">
+                <img src={Loading} alt="Loading..." className='m-auto w-1/2' />
+            </div>
+            ) : (
         <Heading
             ContainerStyle="flex gap-2 justify-center xl:justify-start"
             Children={<FaUsersGear size="3rem" />}
@@ -41,7 +51,7 @@ return (
             HeadingText="Administration"
         />
         <hr />
-        <section className="hidden xl:flex xl:justify-center">
+        <section className="hidden xl: flex xl:justify-center">
             <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , justifyItems: 'center' , overflow: 'hidden', width: '1150px' }}>
             <TableHead>
                 <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '1150px' , overflow: 'hidden' }}>
@@ -106,6 +116,8 @@ return (
                 )) : (<h2 className='font-bold pt-5 text-center text-red-700 text-2xl'>No Users Found.</h2> )
             }
         </section>
+        )
+    }
     </div>
 )
 }
