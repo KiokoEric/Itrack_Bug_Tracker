@@ -95,7 +95,7 @@ const Login: React.FC  = () => {
     const Administrator = async (e: any) => {
         e.preventDefault()
         const data = {
-            Email : "faithkanini@gmail.com" , Password : "Triumph2024"
+            Email : "abeldamina@gmail.com" , Password : "Triumph2024"
         }
         try {
             const response = await axios.post("https://itrack-server-9s7w.onrender.com/Users/Administrator", data)
