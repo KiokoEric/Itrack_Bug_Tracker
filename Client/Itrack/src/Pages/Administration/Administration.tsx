@@ -38,7 +38,7 @@ const Administration:React.FC = () => {
     },[])
 
 return (
-    <div>
+    <div className='flex flex-col gap-5 mb-5 px-2 text-black w-full sm:px-5'>
     {isLoading ? (
         <div className="flex items-center justify-center">
             <img src={Loading} alt="Loading..." className='m-auto w-1/2' />
@@ -53,9 +53,9 @@ return (
             />
             <hr />
             <section className="hidden xl: flex xl:justify-center">
-                <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , justifyItems: 'center' , overflow: 'hidden', width: '1150px' }}>
+                <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', overflow: 'hidden', width: '1150px' }}>
                 <TableHead>
-                    <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '1150px' , overflow: 'hidden' }}>
+                    <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '1150px', overflow: 'hidden' }}>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '50px'}}></Typography></TableCell>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '250px'}}>Name</Typography></TableCell>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '250px'}}>Email</Typography></TableCell>
@@ -66,7 +66,7 @@ return (
                     {
                         (Users.length > 0) ? 
                         Users.map((User: any) => (
-                            <TableRow  sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto', width: '1150px' , overflow: 'hidden' }}>
+                            <TableRow  sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto', width: '1150px', overflow: 'hidden' }}>
                                 <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '50px'}}>{<FaUserTie />}</Typography></TableCell>
                                 <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '250px' }}><Link to={`/${User._id}`} className='text-black no-underline'>{User.Name}</Link></Typography></TableCell>
                                 <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '250px' }}><Link to={`/${User._id}`} className='text-black no-underline'>{User.Email}</Link></Typography></TableCell>
@@ -78,9 +78,9 @@ return (
                 </TableContainer>
             </section>
             <section className="items-center justify-center hidden sm:flex xl:hidden">
-                <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , justifyItems: 'center' , overflow: 'hidden', width: '700px' }}>
+                <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center', overflow: 'hidden', width: '700px' }}>
                 <TableHead>
-                    <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '730px' , overflow: 'hidden' }}>
+                    <TableRow sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto',  width: '730px', overflow: 'hidden' }}>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '50px'}}></Typography></TableCell>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '100px'}}>Name</Typography></TableCell>
                         <TableCell><Typography sx={{ fontWeight: 'bold', width: '180px'}}>Email</Typography></TableCell>
@@ -91,7 +91,7 @@ return (
                 {
                     (Users.length > 0) ? 
                     Users.map((User: any) => (
-                        <TableRow  sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto', width: '700px' , overflow: 'hidden' }}>
+                        <TableRow  sx={{ borderBottom: '1px solid black', display: 'flex', justifyContent: 'space-between', alignContent: 'center', height: '40px', margin: 'auto', width: '700px', overflow: 'hidden' }}>
                             <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '50px'}}>{<FaUserTie />}</Typography></TableCell>
                             <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '100px' }}><Link to={`/${User._id}`} className='text-black no-underline'>{User.Name}</Link></Typography></TableCell>
                             <TableCell><Typography sx={{ fontSize: 17, margin: 'auto', width: '180px' }}><Link to={`/${User._id}`} className='text-black no-underline'>{User.Email}</Link></Typography></TableCell>
