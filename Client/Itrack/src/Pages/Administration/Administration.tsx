@@ -44,7 +44,7 @@ return (
             <img src={Loading} alt="Loading..." className='m-auto w-1/2' />
         </div>
         ) : (
-        <div>
+        <div className='flex flex-col gap-5 mb-5 px-2 text-black w-full sm:px-5'>
             <Heading
                 ContainerStyle="flex gap-2 justify-center xl:justify-start"
                 Children={<FaUsersGear size="3rem" />}
